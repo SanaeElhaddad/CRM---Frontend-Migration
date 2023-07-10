@@ -1,0 +1,137 @@
+<div class="header" style="height:20pxpx;">
+  <!-- 3581ad -->
+  <!-- #4084bd -->
+  <div class="page-brand" style="background-color: #3c8dbc !important;">
+    <a class="link" routerLink="/">
+      <span class="brand">
+        <i class="sidebar-item-icon"><img src="./assets/img/Menu/ems.ico" width="35px" height="35px"
+            style="margin-right: 6px;font-size: 10px;"></i>EMS
+      </span>
+      <span class="brand-mini"> <i class="sidebar-item-icon "><img src="./assets/img/Menu/ems.ico" width="35px"
+            height="35px"></i></span>
+    </a>
+  </div>
+  <!-- 3c8dbc -->
+  <div class="flexbox flex-1 text-white" style="background-color: #3c8dbc; color: white;">
+    <!-- START TOP-LEFT TOOLBAR-->
+    <ul class="nav navbar-toolbar">
+      <li>
+        <a class="nav-link sidebar-toggler js-sidebar-toggler text-white"><i class="ti-menu"></i></a>
+      </li>
+
+    </ul>
+    <!-- END TOP-LEFT TOOLBAR-->
+    <!-- START TOP-RIGHT TOOLBAR-->
+    <ul class="nav navbar-toolbar text-white">
+
+      <!-- <li class="dropdown dropdown-user">
+        <a   routerLink="/core/settings/config-mail"  class="nav-link dropdown-toggle   text-white " >
+<i class="fa fa-cog"></i>
+        </a>
+      </li> -->
+
+
+      <!-- <span class="p-overlay-badge p-mr-5">
+        <a  (click)="op.toggle($event)">
+        <i class="pi pi-bell" style="font-size: 2em" ></i>
+        <span class="p-badge p-badge-warning">{{notificationSize}}</span>
+      </a>
+    </span> -->
+
+      <li class="dropdown dropdown-user">
+        <a class="nav-link dropdown-toggle  text-white " (click)="op.toggle($event)">
+
+          <i class="fa fa-bell"><span class='badge-pill' style=" 
+            position: absolute;
+            font-size: 13px;
+                          margin-left: -5px;
+              margin-top: -10px;
+              min-width: 16px;
+              background: linear-gradient(to right, #e43725 , #f78e83 );  
+                          color: white;">{{notificationSize}}</span></i></a>
+      </li>
+
+
+      <p-overlayPanel #op [style]="{width: '200px' }">
+        <ng-template pTemplate>
+          <div class="card m-0">
+            <div class="card-header p-3 mb-2  text-black">
+              <label class="font-weight-bold "> {{ "Notifications" | translate }} </label>
+            </div>
+
+            <div class="card-body m-0">
+
+              <!-- id=1 => maintenance -->
+              <div class="row">
+
+                <div class="col-md-6">
+                  <label class="font-weight-bold "> {{ "Réception" | translate }}</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <span class="p-1 mb-1 text-white bg-dark rounded-sm">{{this.notificationReceptionSize}} </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <!-- id=2 => produit -->
+                <div class="col-md-6">
+                  <label class="font-weight-bold ">{{ "Expédition" | translate }}</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <span class="p-1 mb-1 text-white bg-dark rounded-sm"> {{this.notificationExpeditionSize}} </span>
+                </div>
+              </div>
+              <div class="row">
+                <!-- id=2 => produit -->
+                <div class="col-md-6">
+                  <label class="font-weight-bold ">{{ "Production" | translate }}</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <span class="p-1 mb-1 text-white bg-dark rounded-sm"> {{this.notificationProductionSize}} </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 mb-1 ">
+              <span class="d-flex justify-content-center">
+                <a routerLink="/core/notification">
+
+                  {{ "Voir Tout" | translate }}</a></span>
+            </div>
+          </div>
+
+
+
+
+
+
+
+        </ng-template>
+      </p-overlayPanel>
+
+
+      <li class="dropdown dropdown-user">
+        <a class="nav-link dropdown-toggle  text-white " data-toggle="dropdown">
+
+          <i class="fa fa-language m-l-5"></i></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" (click)="changeLang('fr')">{{'Francais' | translate}}</a>
+          <a class="dropdown-item" (click)="changeLang('en')">{{'English' | translate}}</a>
+        </ul>
+      </li>
+      <li class="dropdown dropdown-user text-white">
+        <a class="nav-link dropdown-toggle link text-white" data-toggle="dropdown">
+
+          {{this.user}}</a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i>{{ 'Deconnexion' | translate }}</a>
+        </ul>
+      </li>
+    </ul>
+    <!-- END TOP-RIGHT TOOLBAR-->
+  </div>
+
+</div>

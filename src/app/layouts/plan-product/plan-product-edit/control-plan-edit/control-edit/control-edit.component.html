@@ -1,0 +1,65 @@
+<p-dialog header="{{ title | translate }}" [(visible)]="displayDialog"
+ [focusOnShow]="false" [responsive]="true"
+  showEffect="fade" [modal]="true"  [style]="{ width: '30vw' }"
+
+  (onHide)='onHideDialog()'>
+  <br>
+
+
+
+
+  <div style="height: 30vh;">
+    <div class="modal-body">
+      <div class="card-body">
+        <form [formGroup]="controlForm">
+          <div class="row  mt-3 justify-content-around">
+            <div class="form-group col-md-12 ">
+              <label class="font-weight-bold ">{{'Type controle' | translate}} *</label>
+              <span *ngIf="(controlForm.get('fControlType').touched && controlForm.get('fControlType').invalid) ||
+              (isFormSubmitted && controlForm.get('fControlType').invalid)" class="text-lighter"
+          style="color: red; font-size: xx-small;">
+          Obligatoire
+        </span>
+              <br />
+              <p-dropdown [autoDisplayFirst]="this.editMode" [options]="controlTypeList" optionLabel="code"
+                [filter]="true" [showClear]="true" (onChange)="onSelectControlType($event)"
+                formControlName="fControlType"  appendTo="body"></p-dropdown>
+            </div>
+            <div class="form-group col-md-12" *ngIf="this.controleTypeResponseId===1" >
+
+              <label class="font-weight-bold"> {{'Intervale' | translate}}</label><br />
+              <input type="text" class="form-control" pInputText formControlName="fControlTypeInterval" />
+            
+          </div>
+           
+          
+          </div>
+
+          
+
+
+          
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+
+               <!-- button -->
+         
+
+
+
+  <p-footer>
+  
+    <div  class="ui-dialog-buttonpane ui-helper-clearfix">
+
+      <button type="button" pButton (click)="onHideDialog()" class="p-button-primary"
+        label="{{'Annuler' | translate }}"></button>
+      <button type="button" pButton (click)="onSubmit()" class="p-button-success"
+        label="{{ 'Valider' | translate }}"></button>
+    </div>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,36 @@
+<div class="container-fluid cadr "
+>
+<div class="content" style="margin-top: 10%;">
+  <div class="ems" >
+    <img src="./assets/img/Menu/ems.ico" style="width: 80px;height:80px;" ><br>
+
+    <a class="link" routerLink="/index" style="color: #414848;">EMS</a>
+  </div>
+  <form id="login-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <h2 class="login-title" style="color: #414848;">{{'Authentification' | translate}}</h2>
+    <div class="form-group">
+      <div class="input-group-icon right">
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+        <input  pInputText  class="form-control" type="email" name="email" placeholder="Email" autocomplete="off" ngModel>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group-icon right">
+        <div class="input-icon"><i class="fa fa-lock font-16"></i></div>
+        <input pInputText  class="form-control" type="password" name="password" placeholder="Password" ngModel>
+      </div>
+    </div>
+    <div class="form-group d-flex justify-content-between">
+      <!-- <label class="ui-checkbox ui-checkbox-info">
+        <input type="checkbox">
+        <span class="input-span"></span>{{'Remember me' | translate}}</label>
+      <a routerLink="/forgot_password">{{'Forgot password' | translate}}?</a> -->
+    </div>
+    <div class="form-group">
+      <button class="btn btn-info btn-block" type="submit">{{'Login' | translate}}</button>
+    </div>
+  </form>
+</div>
+</div>
+
+<ngx-spinner></ngx-spinner>
