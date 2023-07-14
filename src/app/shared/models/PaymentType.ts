@@ -4,7 +4,6 @@ export class PaymentType {
   typePaymentDescription: string;
   typePaymentCreationDate: Date;
   typePaymentUpdateDate: Date;
-  // typePaymentUser: User;
   typePaymentByDefault: boolean;
 
 

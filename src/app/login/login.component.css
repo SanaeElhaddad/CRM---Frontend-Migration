@@ -1,15 +1,15 @@
 
-.ems {
+.crm {
 	font-size: 44px;
 	text-align: center;
 	color: #ffffff;
-    /* margin: 20px 0; */
+  margin: 20px 0;
 }
 
 .content {
 	max-width: 400px;
 	margin:0 auto;
-	
+
 }
 .content form {
 	padding: 15px 20px 20px 20px;
@@ -63,13 +63,12 @@
 }
 
 .cadr{
-	background:url('./../../assets/img/imgArrierePlan.jpg');
-	width: 100vw;
+  width: 100vw;
 	height: 100vh;
 	background-size:100vh;
 	position: absolute;
-	background-repeat: no-repeat;
-	background-size: cover;
+  background: url("/assets/img/CRMBackground.png") no-repeat;
+  background-size: cover;
 	overflow-y: scroll;
 
 }

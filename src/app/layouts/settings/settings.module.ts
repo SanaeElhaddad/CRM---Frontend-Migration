@@ -43,8 +43,6 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {AccordionModule, AccordionTab} from 'primeng/accordion';
 import {NgxPrintModule} from 'ngx-print';
-import { FrequencyTypeComponent } from './frequencyType/frequencyType.component';
-import { FrequencyTypeEditComponent } from './frequencyType/frequency-type-edit/frequency-type-edit.component';
 
 
 
@@ -53,9 +51,6 @@ import { FrequencyTypeEditComponent } from './frequencyType/frequency-type-edit/
   declarations: [
 
     SettingsComponent,
- 
-     FrequencyTypeComponent,FrequencyTypeEditComponent
-
   ],
   imports: [
     CommonModule,

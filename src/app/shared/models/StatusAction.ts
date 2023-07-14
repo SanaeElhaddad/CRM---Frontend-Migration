@@ -6,7 +6,6 @@ export class StatusAction {
   statusActionDescription!: string;
   statusActionCreationDate!: Date;
   statusActionUpdateDate!: Date;
-  // statusActionUsrUser!: User;
 
 
 }

@@ -4,6 +4,5 @@ export class StatusLead {
   statusLeadDescription!: string;
   statusLeadCreationDate!: Date;
   statusLeadUpdateDate!: Date;
-  // statusLeadUsrUser!: User;
 
 }

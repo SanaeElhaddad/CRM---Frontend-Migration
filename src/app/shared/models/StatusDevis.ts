@@ -5,6 +5,5 @@ export class StatusDevis {
   statusDevisDescription!: string;
   statusDevisCreationDate!: Date;
   statusDevisUpdateDate!: Date;
-  // statusDevisUsrUser!: User;
 
 }

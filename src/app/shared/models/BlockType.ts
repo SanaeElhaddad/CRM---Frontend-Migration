@@ -1,3 +1,5 @@
+import {Owner} from './Owner';
+
 export class BlockType {
   id: number;
   owner: Owner;

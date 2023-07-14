@@ -30,7 +30,6 @@ export class ProxyService {
     //  console.log(fullurl);
       return this.http.get<any>(fullurl);
 
-      //....users/2
   }
 
   findByCode(controller: string, code: string): Observable<any> {
@@ -52,7 +51,6 @@ export class ProxyService {
           search +
           '&token=' +
           this.getToken();
-          //console.log("fullurl");
 
       console.log(fullurl);
       return this.http.get<any[]>(fullurl);
@@ -108,7 +106,7 @@ export class ProxyService {
           '&token=' +
           this.getToken();
           console.log("pagination");
-          
+
       console.log(fullurl);
 
       return this.http.get<any[]>(fullurl);
@@ -261,7 +259,7 @@ findByPatrimony(controller: string, idVehicle: number): Observable<any> {
 }
 
 verify(controller: string) {
-    const fullurl = 
+    const fullurl =
         this.url +
         controller +
         '?token=' +

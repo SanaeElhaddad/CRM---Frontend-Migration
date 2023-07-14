@@ -5,7 +5,6 @@ export  class OrderStatus {
   description!: string;
   creationDate!: Date;
   updateDate!: Date;
-  // user: User;
   orderType!: boolean;
   archivable!: boolean;
   // organisation: Organization;

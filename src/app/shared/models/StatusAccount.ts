@@ -6,5 +6,4 @@ export class StatusAccount {
   statusAccountDescription!: string;
   statusAccountCreationDate!: Date;
   statusAccountUpdateDate!: Date;
-  // statusAccountUser!: User;
 }

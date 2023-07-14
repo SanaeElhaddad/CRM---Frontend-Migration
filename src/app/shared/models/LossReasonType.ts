@@ -5,7 +5,4 @@ export class LossReasonType {
   lossReasonTypeDescription!: string;
   lossReasonTypeCreationDate!: Date;
   lossReasonTypeUpdateDate!: Date;
-  // lossReasonTypeUser: User;
-
-
 }

@@ -1,12 +1,12 @@
 import { Observable } from "rxjs";
 import { EmittedOBject } from "./emitted-object";
-import { UserService } from "./../../services/api/user.service";
-import { AuthenticationService } from "./../../services/api/authentication.service";
+import { UserService } from '../../services/api/user.service';
+import { AuthenticationService } from '../../services';
 import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
-import { User } from "./../../models/user";
+import { User } from '../../models';
 import { MenuItem, ConfirmationService, SortEvent } from "primeng/api";
-import { Columns } from "./../../models/column";
+import { Columns } from '../../models';
 import {
   Component,
   OnInit,
@@ -35,8 +35,8 @@ export class DataTableComponent implements OnInit {
   @Input() objectExportList: Array<any> = [];
   @Input() _selectedColumns: Array<any> = [];
   @Input() cols: any[];
-  @Input() className: String;
-  @Input() listName: String;
+  @Input() className: string;
+  @Input() listName: string;
   @Input() addBtnVisible = false;
   @Input() viewBtnVisible = false;
   @Input() updateBtnVisible = false;
@@ -68,18 +68,18 @@ export class DataTableComponent implements OnInit {
     this.loadColumns();
 
     this.items = [
-     
+
       {label: 'En PDF', icon: 'pi pi-file-pdf', command: () => {
           this.exportPdf();
-      }},
+        }},
       {label: 'En EXCEL Vue', icon: 'pi pi-file-excel', command: () => {
-        this.exportExcelVue();
-     }},
-     {label: 'En EXCEL Globale', icon: 'pi pi-file-excel', command: () => {
-      this.exportExcelGlobal();
-     }},
-    
-  ];
+          this.exportExcelVue();
+        }},
+      {label: 'En EXCEL Globale', icon: 'pi pi-file-excel', command: () => {
+          this.exportExcelGlobal();
+        }},
+
+    ];
 
 
   }
@@ -89,13 +89,12 @@ export class DataTableComponent implements OnInit {
   }
 
   set selectedColumns(val: any[]) {
-    //restore original order
     this._selectedColumns = this.cols.filter(col => val.includes(col));
   }
 
   loadColumns() {
     this.user = this.authUser.getCurrentUser();
-  
+
 
     if (this.user.columns != null && this.user.columns !== "") {
       this.columnsAdded = JSON.parse(this.user.columns);

@@ -1,3 +1,5 @@
+import {PrerequisiteType} from './PrerequisiteType';
+
 export class BusinessType {
   id!: number;
   code!: string;
