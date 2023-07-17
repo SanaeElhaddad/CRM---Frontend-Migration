@@ -1,43 +1,38 @@
-import { NgPipesModule } from 'ngx-pipes';
-import { SharedModule } from './shared/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
-import { AppComponent } from './/app.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { ToastrModule } from 'ngx-toastr';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import localeFr from '@angular/common/locales/fr';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { HasPermissionDirective } from './shared/directive/hasPermission.directive';
-import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { NgPipesModule } from "ngx-pipes";
+import { SharedModule } from "./shared/shared.module";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { registerLocaleData } from "@angular/common";
+import { AppComponent } from ".//app.component";
+import { AppRoutingModule } from ".//app-routing.module";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { ToastrModule } from "ngx-toastr";
+import { NgxPermissionsModule } from "ngx-permissions";
+import localeFr from "@angular/common/locales/fr";
+import { OverlayPanelModule } from "primeng/overlaypanel";
+import { HasPermissionDirective } from "./shared/directive/hasPermission.directive";
+import { FullCalendarModule } from "@fullcalendar/angular"; // the main connector. must go first
+import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin
+import interactionPlugin from "@fullcalendar/interaction"; // a plugin
+import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
 
 //  AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
   //  for development
   //  return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
-registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeFr, "fr");
 
-FullCalendarModule.registerPlugins([
-  dayGridPlugin,
-  interactionPlugin
-])
+FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,14 +44,14 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule, // register FullCalendar with you app
     SharedModule.forRoot(),
     NgxPermissionsModule.forRoot({
-     // permissionsIsolate: false
+      // permissionsIsolate: false
     }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     AppRoutingModule,
     ToastrModule.forRoot({
@@ -67,12 +62,8 @@ FullCalendarModule.registerPlugins([
       maxOpened: 2,
       newestOnTop: true,
     }),
-
-
-
   ],
   bootstrap: [AppComponent],
-  providers:[MessageService],
-
+  providers: [MessageService],
 })
-export class AppModule { }
+export class AppModule {}

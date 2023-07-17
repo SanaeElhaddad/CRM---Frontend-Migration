@@ -1,55 +1,48 @@
+import { NotificationService } from "./../shared/services/api/notification.service";
 
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { SharedModule } from './../shared/shared.module';
+import { AutoCompleteModule } from "primeng/autocomplete";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { SharedModule } from "./../shared/shared.module";
 
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
-import { AppLayoutRoutingModule } from './layout-routing.module';
-import { NgModule } from '@angular/core';
-import { LayoutComponent } from './/layout.component';
-import { AppHeaderComponent } from './template/app-header/app-header.component';
-import { AppSidebarComponent as AppSidebarComponent } from './template/app-sidebar/app-sidebar.component';
-import { AppFooter as AppFooterComponent } from './template/app-footer/app-footer.component';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { TableModule } from 'primeng/table';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import {BreadcrumbModule} from 'primeng/breadcrumb';
-import { ToastModule } from 'primeng/toast';
-
-
-
+import { TranslateModule } from "@ngx-translate/core";
+import { CommonModule } from "@angular/common";
+import { AppLayoutRoutingModule } from "./layout-routing.module";
+import { NgModule } from "@angular/core";
+import { LayoutComponent } from ".//layout.component";
+import { AppHeaderComponent } from "./template/app-header/app-header.component";
+import { AppSidebarComponent as AppSidebarComponent } from "./template/app-sidebar/app-sidebar.component";
+import { AppFooter as AppFooterComponent } from "./template/app-footer/app-footer.component";
+import { OverlayPanelModule } from "primeng/overlaypanel";
+import { TableModule } from "primeng/table";
+import { NgxPermissionsModule } from "ngx-permissions";
+import { BreadcrumbModule } from "primeng/breadcrumb";
+import { ToastModule } from "primeng/toast";
 
 @NgModule({
   declarations: [
     LayoutComponent,
     AppHeaderComponent,
     AppSidebarComponent,
-    AppFooterComponent
- 
-
-
+    AppFooterComponent,
   ],
   exports: [
     LayoutComponent,
     AppHeaderComponent,
     AppSidebarComponent,
-    AppFooterComponent
-
+    AppFooterComponent,
   ],
   imports: [
     CommonModule,
-     AppLayoutRoutingModule, 
-     TranslateModule, 
-     SharedModule,
-     NgxPermissionsModule.forChild(),
-     OverlayPanelModule,TableModule,
-     BreadcrumbModule,
-     ToastModule,
-
+    AppLayoutRoutingModule,
+    TranslateModule,
+    SharedModule,
+    NgxPermissionsModule.forChild(),
+    OverlayPanelModule,
+    TableModule,
+    BreadcrumbModule,
+    ToastModule,
   ],
 
-  providers: [ ConfirmationService,MessageService]
+  providers: [ConfirmationService, MessageService, NotificationService],
 })
-export class LayoutModule {
-}
+export class LayoutModule {}
