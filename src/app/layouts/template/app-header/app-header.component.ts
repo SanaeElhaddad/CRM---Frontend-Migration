@@ -30,12 +30,11 @@ export class AppHeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    this.loadData();
     this.user=this.auth.getCurrentUser().usrCode;
     console.log( this.user);
- 
- 
- 
+
+
+
      this.translate.addLangs([
       'en',
       'fr'
@@ -48,45 +47,13 @@ export class AppHeaderComponent implements OnInit {
         : 'fr'
     );
   }
-  loadData(search: string = '') {
 
-    this.notificationService.sizeSearch(search).subscribe(
-      data => {
-        this.notificationSize = data;
-      }
-    );
-
-
-    this.notificationService.sizeSearch('notificationType.id:2').subscribe(
-      data => {
-        this.notificationReceptionSize = data;
-        console.log("recep");
-        
-        console.log( this.notificationReceptionSize);
-        
-      }
-    );
-  
-    this.notificationService.sizeSearch('notificationType.id:1').subscribe(
-      data => {
-        this.notificationExpeditionSize = data;
-      }
-    );
-
-    this.notificationService.sizeSearch('notificationType.id:3').subscribe(
-      data => {
-        this.notificationProductionSize = data;
-      }
-    );
-
-    
-  }
 
 
   changeLang(language: string) {
    // console.log(language);
     this.translate.use(language);
-    
+
   }
 
   logout() {

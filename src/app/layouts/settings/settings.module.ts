@@ -60,6 +60,7 @@ import { HabilitationComponent } from "./habilitation/habilitation.component";
 import { FileUploadModule } from "primeng/fileupload";
 import { ProductTypeComponent } from "./product-type/product-type.component";
 import { ProductTypeEditComponent } from "./product-type/product-type-edit/product-type-edit.component";
+import { StatusActionEditComponent } from './status-action/status-action-edit/status-action-edit.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ProductTypeEditComponent } from "./product-type/product-type-edit/produ
     PrerequisComponent,
     HabilitationComponent,
     ProductTypeComponent,
-    ProductTypeEditComponent
+    ProductTypeEditComponent,
+    StatusActionEditComponent
   ],
   imports: [
     CommonModule,

@@ -42,21 +42,17 @@
   (lazyLoadData)="loadDataLazy($event)"
   [listName]="titleList"
   [viewBtnVisible]="'false'"
-
+  [addBtnVisible]="showDialog"
   (exportBtnExcelGlobal)="onExportExcel($event)"
   (exportBtnPdf)="onExportPdf($event)"
   (exportBtnExcelVue)="onExportExcel($event)"
-
   [permissionCreate]="['PRODUCT_CREATE']"
   [permissionDelete]="['PRODUCT_DELETE']"
   [permissionEdit]="['PRODUCT_EDIT']"
 ></app-data-table>
 
 <div *ngIf="showDialog == true">
-  <app-product-edit
-    [editMode]="editMode"
-    [selectedProduct]="selectProducts[0]"
-    (showDialog)="onShowDialog($event)"
-  ></app-product-edit>
+<app-status-action-edit [editMode]="editMode" [selectedActionStatus]="selectedActionStatus"
+(showDialog)="onShowDialog($event)">
+  </app-status-action-edit>
 </div>
-
