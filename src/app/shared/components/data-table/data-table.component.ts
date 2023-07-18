@@ -1,7 +1,7 @@
+import { AuthenticationService } from './../../services/api/authentication.service';
 import { Observable } from "rxjs";
 import { EmittedOBject } from "./emitted-object";
 import { UserService } from '../../services/api/user.service';
-import { AuthenticationService } from '../../services';
 import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
 import { User } from '../../models';

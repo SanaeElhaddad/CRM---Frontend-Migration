@@ -31,7 +31,7 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    this.user=this.auth.getCurrentUser().code;
+    this.user=this.auth.getCurrentUser().usrCode;
     console.log( this.user);
  
  

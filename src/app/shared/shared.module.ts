@@ -38,6 +38,8 @@ import {DataTableComponent} from './components/data-table/data-table.component';
 import {NgxPermissionsModule} from 'ngx-permissions';
 import {HasPermissionDirective} from './directive/hasPermission.directive';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import { ProductTypeService } from './services/api/product-type.service';
+import { UserService } from './services/api/user.service';
 
 
 @NgModule({
@@ -84,7 +86,8 @@ export class SharedModule {
 
       ngModule: SharedModule,
       providers: [
-        // ProductService,
+         ProductTypeService,
+         UserService
 
       ],
 
