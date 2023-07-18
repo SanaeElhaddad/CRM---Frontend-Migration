@@ -51,12 +51,13 @@ import { StatusActionComponent } from "./status-action/status-action.component";
 import { StatusCompteComponent } from "./status-compte/status-compte.component";
 import { StatusDevisComponent } from "./status-devis/status-devis.component";
 import { UniteMesureComponent } from "./unite-mesure/unite-mesure.component";
-import { SecteurActiviteComponent } from './secteur-activite/secteur-activite.component';
-import { StatusOpportuniteComponent } from './status-opportunite/status-opportunite.component';
-import { ParametreComponent } from './parametre/parametre.component';
-import { CategorieComponent } from './categorie/categorie.component';
-import { PrerequisComponent } from './prerequis/prerequis.component';
-import { HabilitationComponent } from './habilitation/habilitation.component';
+import { SecteurActiviteComponent } from "./secteur-activite/secteur-activite.component";
+import { StatusOpportuniteComponent } from "./status-opportunite/status-opportunite.component";
+import { ParametreComponent } from "./parametre/parametre.component";
+import { CategorieComponent } from "./categorie/categorie.component";
+import { PrerequisComponent } from "./prerequis/prerequis.component";
+import { HabilitationComponent } from "./habilitation/habilitation.component";
+import { FileUploadModule } from "primeng/fileupload";
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { HabilitationComponent } from './habilitation/habilitation.component';
   ],
   imports: [
     CommonModule,
+    FileUploadModule,
     FormsModule,
     ReactiveFormsModule,
     SettingsRoutingModule,
@@ -110,7 +112,7 @@ import { HabilitationComponent } from './habilitation/habilitation.component';
     SelectButtonModule,
     AccordionModule,
     NgxPrintModule,
-    NgxPermissionsModule.forChild(),
+    NgxPermissionsModule.forChild()
   ],
 })
 export class SettingsModule {}

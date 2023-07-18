@@ -1,3 +1,4 @@
+import { UserService } from "./shared/services/api/user.service";
 import { NgPipesModule } from "ngx-pipes";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
@@ -64,6 +65,6 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
     }),
   ],
   bootstrap: [AppComponent],
-  providers: [MessageService],
+  providers: [MessageService, UserService],
 })
 export class AppModule {}
