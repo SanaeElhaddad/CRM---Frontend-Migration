@@ -5,13 +5,17 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { SettingsComponent } from "./settings.component";
 import { GeneralComponent } from "./general/general.component";
+import { ProductTypeComponent } from "./product-type/product-type.component";
 
 const routes: Routes = [
   {
     path: "",
     component: SettingsComponent,
-    children: [{ path: "general", component: GeneralComponent }],
+    children: [{ path: "general", component: GeneralComponent },
+    { path: "productType", component: ProductTypeComponent }],
   },
+
+  
 ];
 
 @NgModule({
