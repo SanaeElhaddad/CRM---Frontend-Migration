@@ -1,6 +1,6 @@
 import { ProxyService } from './proxy.service';
 import { EmsService } from './ems.service';
-import { StatusAction } from './../../models/StatusAction';
+import { StatusAction } from './../../models/';
 import { Injectable } from '@angular/core';
 
 @Injectable({
