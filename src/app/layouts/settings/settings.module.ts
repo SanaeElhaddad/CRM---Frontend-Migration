@@ -58,6 +58,8 @@ import { CategorieComponent } from "./categorie/categorie.component";
 import { PrerequisComponent } from "./prerequis/prerequis.component";
 import { HabilitationComponent } from "./habilitation/habilitation.component";
 import { FileUploadModule } from "primeng/fileupload";
+import { ProductTypeComponent } from "./product-type/product-type.component";
+import { ProductTypeEditComponent } from "./product-type/product-type-edit/product-type-edit.component";
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { FileUploadModule } from "primeng/fileupload";
     CategorieComponent,
     PrerequisComponent,
     HabilitationComponent,
+    ProductTypeComponent,
+    ProductTypeEditComponent
   ],
   imports: [
     CommonModule,
