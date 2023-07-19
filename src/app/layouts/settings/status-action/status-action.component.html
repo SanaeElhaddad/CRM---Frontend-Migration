@@ -52,7 +52,18 @@
 ></app-data-table>
 
 <div *ngIf="showDialog == true">
-<app-status-action-edit [editMode]="editMode" [selectedActionStatus]="selectedActionStatus"
-(showDialog)="onShowDialog($event)">
+  <app-status-action-edit
+    [editMode]="editMode"
+    [selectedActionStatus]="selectedActionStatus"
+    (showDialog)="onShowDialog($event)"
+  >
   </app-status-action-edit>
 </div>
+
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+  [acceptLabel]="'Oui'"
+  [rejectLabel]="'Non'"
+>
+</p-confirmDialog>

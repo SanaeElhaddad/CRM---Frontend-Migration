@@ -41,7 +41,14 @@
         >
           Annuler
         </button>
-        <button type="button" class="btn btn-success">Valider</button>
+        <button
+          type="button"
+          [disabled]="accountStatutForm.invalid"
+          (click)="onSubmitForm()"
+          class="btn btn-success"
+        >
+          Valider
+        </button>
       </div>
     </form>
   </div>

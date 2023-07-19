@@ -1,7 +1,7 @@
 import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
 import { ActionStatusService } from "../../../shared/services/api/action-status.service";
 
-import { MessageService } from "primeng/api";
+import { ConfirmationService, MessageService } from "primeng/api";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Subscription } from "rxjs";
@@ -28,12 +28,13 @@ export class StatusActionComponent implements OnInit, OnDestroy {
   titleList = "Statut action";
   showDialog: boolean = false;
   subscriptions = new Subscription();
-  selectedActionStatus = new StatusAction();
+  selectedActionStatus: Array<StatusAction> = [];
 
   constructor(
     private spinner: NgxSpinnerService,
     private actionStatusService: ActionStatusService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
@@ -67,6 +68,7 @@ export class StatusActionComponent implements OnInit, OnDestroy {
         (data) => {
           this.statusActionList = data;
           this.spinner.hide();
+          console.log(data);
         },
         (error) => {
           this.spinner.hide();
@@ -89,22 +91,64 @@ export class StatusActionComponent implements OnInit, OnDestroy {
   }
   onSearchClicked() {}
   onObjectEdited(event: EmittedOBject) {
-    if (event.operationMode == 1) {
+    if (event.operationMode === 1) {
       this.showDialog = true;
       this.editMode = 1;
-    } else if (event.operationMode == 2) {
+    } else if (event.operationMode === 2) {
       this.selectedActionStatus = event.object[0];
+
       this.showDialog = true;
+    } else if (event.operationMode === 3) {
+      this.selectedActionStatus = event.object;
+      this.deleteAll();
     }
   }
   loadDataLazy(event) {}
   onExportExcel(event) {}
   onExportPdf(event) {}
 
+  deleteAll() {
+    if (this.selectedActionStatus.length >= 1) {
+      this.confirmationService.confirm({
+        message: "Voulez vous vraiment Suprimer?",
+        accept: () => {
+          this.spinner.show();
+          const ids = this.selectedActionStatus.map((x) => x.statusActionId);
+          this.subscriptions.add(
+            ids.forEach((id) => {
+              this.actionStatusService.delete(id).subscribe(
+                (data) => {
+                  this.messageService.add({
+                    severity: "success",
+                    summary: "Suppression",
+                    detail: "Elément Supprimer avec Succés",
+                  });
+                  this.loadData();
+                },
+                (error) => {
+                  this.messageService.add({
+                    severity: "error",
+                    summary: "Erreur",
+                    detail: JSON.stringify(error),
+                  });
+                  this.spinner.hide();
+                },
+                () => {
+                  this.spinner.hide();
+                }
+              );
+            })
+          );
+        },
+      });
+    }
+  }
+
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
   onShowDialog(event) {
     this.showDialog = event;
+    this.loadData();
   }
 }
