@@ -1,25 +1,42 @@
 
-import { Owner } from './owner';
 import {UserGroup} from './user-group';
 
 
 export class User {
-    id: number;
-    code: string;
-    password: string;
-    name: string;
-    surName: string;
-    dateOfBirth: Date;
-    tel: string;
-    passportNumber: string;
-    comment: string;
-    email: string;
-    isActive: boolean;
-    isResponsible: boolean;
-    owner: Owner;
-    type: number;
-    // agency: Agency;
-    columns: string;
-    // saleOrders: SaleOrder[];
+    
+
+
+   
+    account: any;
+    columns: any;
+    commercial: any;
+    createdBy: any;
+    distributor: any;
+    owner: any;
+    updatedBy: any;
+    usrAccounts: any;
+    usrAgency: any;
+    usrCode: any;
+    usrCompanys: any;
+    usrCreationDate: any;
+    usrDateOfBirth: any;
+    usrEmailPrincipal: any;
+    usrEmailSecondaire: any;
+    usrFax: any;
+    usrFix: any;
+    usrHasZone: any;
+    usrId: any;
+    usrIsActive: any;
+    usrLedLeads: any;
+    usrName: any;
+    usrObjectives: any;
+    usrPassword: any;
+    usrPrmAddresses: any;
+    usrService: any;
+    usrSurname: any;
+    usrTel: any;
+    usrType: any;
     userGroup: UserGroup;
+
+
 }

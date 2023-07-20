@@ -6,6 +6,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { SettingsComponent } from "./settings.component";
 import { GeneralComponent } from "./general/general.component";
 
+
 const routes: Routes = [
   {
     path: "",

@@ -1,5 +1,4 @@
 import { LOGGED_IN } from './../../utils/constants';
-import { Owner } from './../../models/owner';
 import { User } from './../../models/user';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
@@ -56,7 +55,7 @@ export class AuthenticationService implements OnDestroy{
 
                 user => {
                     this.currentUser = user;
- 
+
                     if (
                         this.currentUser !== undefined &&
                         this.currentUser !== null
@@ -75,7 +74,7 @@ export class AuthenticationService implements OnDestroy{
                         }
                         this.permissionService.loadPermissions(permissions);
                        // console.log(this.permissionService.getPermissions());
-                        
+
                        // this.currentUser.columns = '';
                         // this.currentUser.agency = null;
                       //  this.currentUser.saleOrders = null;
@@ -85,7 +84,7 @@ export class AuthenticationService implements OnDestroy{
                             CURRENT_USER,
                             JSON.stringify(user)
                         );
-                        this.router.navigate(['/']);
+                        this.router.navigate(['/core']);
                         this.toast.success('Successfully logged in', 'Welcome');
                         this.spinner.hide();
                     } else {
@@ -122,7 +121,7 @@ export class AuthenticationService implements OnDestroy{
 
         if (user !== undefined && user !== null) {
            //console.log(loadPermissions);
-            
+
             if (loadPermissions) {
                 const permissions: string[] = [];
                 if (
@@ -159,15 +158,15 @@ export class AuthenticationService implements OnDestroy{
 
     }
 
-    getDefaultOwner(): Owner {
-        const user = this.getCurrentUser(false);
-        if (user != null) {
-            return user.owner;
+    // getDefaultOwner(): Owner {
+    //     const user = this.getCurrentUser(false);
+    //     if (user != null) {
+    //         return user.owner;
 
-        }
-        
-        return null;
-    }
+    //     }
+
+    //     return null;
+    // }
 
     logout(): void {
         //  clear token remove user from local storage to log user out
@@ -192,9 +191,9 @@ export class AuthenticationService implements OnDestroy{
         if (user !== null) {
             const times: number = Date.now() + 1000 * 60 * 60;
             const str: string =
-                user.name + ':' + times + ':' + user.password + ':obfuscate';
+                user.usrName + ':' + times + ':' + user.usrPassword + ':obfuscate';
             const token: string =
-                user.email + ':' + times + ':' + Md5.hashStr(str);
+                user.usrEmailPrincipal + ':' + times + ':' + Md5.hashStr(str);
             //
             return token;
         } else {
