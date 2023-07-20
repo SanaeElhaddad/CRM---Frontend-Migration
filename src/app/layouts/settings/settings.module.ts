@@ -61,6 +61,7 @@ import { FileUploadModule } from "primeng/fileupload";
 import { ProductTypeComponent } from "./product-type/product-type.component";
 import { ProductTypeEditComponent } from "./product-type/product-type-edit/product-type-edit.component";
 import { StatusActionEditComponent } from './status-action/status-action-edit/status-action-edit.component';
+import { UniteMesureEditComponent } from './unite-mesure/unite-mesure-edit/unite-mesure-edit.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { StatusActionEditComponent } from './status-action/status-action-edit/st
     HabilitationComponent,
     ProductTypeComponent,
     ProductTypeEditComponent,
-    StatusActionEditComponent
+    StatusActionEditComponent,
+    UniteMesureEditComponent
   ],
   imports: [
     CommonModule,

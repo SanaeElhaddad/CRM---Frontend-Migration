@@ -20,3 +20,4 @@ export * from "./control-state";
 export * from "./StatusAction";
 export * from "./Organisation";
 export * from "./accounts";
+export * from "./uom";

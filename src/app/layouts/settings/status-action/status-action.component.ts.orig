@@ -1,0 +1,68 @@
+<<<<<<< HEAD
+import { MessageService } from "primeng/api";
+import { ActionStatusService } from "./../../../shared/services/api/action-status.service";
+import { Component, OnInit } from "@angular/core";
+import { NgxSpinnerService } from "ngx-spinner";
+import { Subscription } from "rxjs";
+import { StatusAction } from "../../../shared/models";
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> a9582f845b01edbbcbf7f931840af4d5c58245a5
+
+@Component({
+  selector: 'app-status-action',
+  templateUrl: './status-action.component.html',
+  styleUrls: ['./status-action.component.css']
+})
+export class StatusActionComponent implements OnInit {
+
+<<<<<<< HEAD
+  constructor(
+    private spinner: NgxSpinnerService,
+    private actionStatusService: ActionStatusService,
+    private messageService: MessageService
+  ) {}
+=======
+  constructor() { }
+>>>>>>> a9582f845b01edbbcbf7f931840af4d5c58245a5
+
+  ngOnInit(): void {
+  }
+
+<<<<<<< HEAD
+  onNameSearch(event: any) {}
+
+  loadData(search: string = "") {
+    this.spinner.show();
+    this.subscriptions.add(
+      this.actionStatusService.findAll().subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          this.spinner.hide();
+          this.messageService.add({
+            severity: "error",
+            summary: "Erreur",
+            detail: JSON.stringify(error),
+          });
+        }
+      )
+    );
+  }
+
+  reset() {
+    this.codeSearch = null;
+    this.StatutDescSearch = null;
+    this.page = 0;
+    this.searchQuery = "";
+    this.loadData();
+  }
+  onSearchClicked() {}
+  onObjectEdited(event) {}
+  loadDataLazy(event) {}
+  onExportExcel(event) {}
+  onExportPdf(event) {}
+=======
+>>>>>>> a9582f845b01edbbcbf7f931840af4d5c58245a5
+}

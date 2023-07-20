@@ -1,3 +1,4 @@
+import { EmsBuffer } from './../../../shared/utils/ems-buffer';
 import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
 import { ActionStatusService } from "../../../shared/services/api/action-status.service";
 
@@ -7,6 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { Subscription } from "rxjs";
 
 import { StatusAction } from "../../../shared/models";
+
 
 @Component({
   selector: "app-status-action",
@@ -89,7 +91,9 @@ export class StatusActionComponent implements OnInit, OnDestroy {
     this.searchQuery = "";
     this.loadData();
   }
-  onSearchClicked() {}
+  onSearchClicked() {
+  
+  }
   onObjectEdited(event: EmittedOBject) {
     if (event.operationMode === 1) {
       this.showDialog = true;
