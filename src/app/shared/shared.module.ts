@@ -39,6 +39,7 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import {HasPermissionDirective} from './directive/hasPermission.directive';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { ClientService } from './services/api/client.service';
+import { UserService } from './services/api/user.service';
 
 
 @NgModule({
@@ -85,7 +86,7 @@ export class SharedModule {
 
       ngModule: SharedModule,
       providers: [
-        // ProductService,
+         ProductTypeService,
         ClientService
 
       ],

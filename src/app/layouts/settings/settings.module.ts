@@ -58,6 +58,9 @@ import { CategorieComponent } from "./categorie/categorie.component";
 import { PrerequisComponent } from "./prerequis/prerequis.component";
 import { HabilitationComponent } from "./habilitation/habilitation.component";
 import { FileUploadModule } from "primeng/fileupload";
+import { ProductTypeComponent } from "./product-type/product-type.component";
+import { ProductTypeEditComponent } from "./product-type/product-type-edit/product-type-edit.component";
+import { StatusActionEditComponent } from './status-action/status-action-edit/status-action-edit.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,9 @@ import { FileUploadModule } from "primeng/fileupload";
     CategorieComponent,
     PrerequisComponent,
     HabilitationComponent,
-
+    ProductTypeComponent,
+    ProductTypeEditComponent,
+    StatusActionEditComponent
   ],
   imports: [
     CommonModule,

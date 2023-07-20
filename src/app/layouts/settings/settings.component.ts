@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
@@ -7,6 +7,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+
   itemsBreadcrumb: MenuItem[];
   homeBreadcrumb: MenuItem;
 
@@ -20,5 +21,6 @@ export class SettingsComponent implements OnInit {
     ];
     this.homeBreadcrumb = { icon: 'pi pi-home' };
   }
+
 
 }

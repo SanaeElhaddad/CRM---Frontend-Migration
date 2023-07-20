@@ -1,6 +1,6 @@
 import { ProxyService } from './proxy.service';
-import { EmsService } from './ems.service';
 import { StatusAction } from './../../models/';
+import { EmsService } from './ems.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,3 +12,4 @@ export class ActionStatusService extends EmsService<StatusAction>{
     super(proxy, 'statusActions');
    }
 }
+
