@@ -58,7 +58,6 @@ import { CategorieComponent } from "./categorie/categorie.component";
 import { PrerequisComponent } from "./prerequis/prerequis.component";
 import { HabilitationComponent } from "./habilitation/habilitation.component";
 import { FileUploadModule } from "primeng/fileupload";
-import { ClientComponent } from "../relation/client/client.component";
 
 @NgModule({
   declarations: [
@@ -76,7 +75,7 @@ import { ClientComponent } from "../relation/client/client.component";
     CategorieComponent,
     PrerequisComponent,
     HabilitationComponent,
-    ClientComponent
+
   ],
   imports: [
     CommonModule,
