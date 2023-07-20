@@ -1,18 +1,17 @@
-import { Owner } from './owner';
+import { Owner } from './Owner';
 
 export class Address {
-    adrId: number;
-    adrCode: string;
-    adrLine1: string;
-    adrLine2: string;
-    adrCity: string;
-    adrDigicode: string;
-    adrCountry: string;
-    adrZip: string;
-    adrState: string;
-    adrCreationDate: Date;
-    adrUpdateDate: Date;
-    adrLatitude: number;
-    adrLongitude: number;
-    owner: Owner;
+  id: number;
+  code: string;
+  line1: string;
+  line2: string;
+  zip: string;
+  digiCode: string;
+  city: string;
+  state: string;
+  country: string;
+  creationDate: Date;
+  updateDate: Date;
+
+  owner:Owner;
 }

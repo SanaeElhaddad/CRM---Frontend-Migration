@@ -47,8 +47,8 @@ export class AppHeaderComponent implements OnInit {
         : 'fr'
     );
   }
-  loadData(search: string = '') {
 
+<<<<<<< HEAD
     this.notificationService.sizeSearch(search).subscribe(
       data => {
         this.notificationSize = data;
@@ -80,6 +80,8 @@ export class AppHeaderComponent implements OnInit {
 
 
   }
+=======
+>>>>>>> e497b7ce92d639501556ddb881901e9a86a33199
 
 
   changeLang(language: string) {
