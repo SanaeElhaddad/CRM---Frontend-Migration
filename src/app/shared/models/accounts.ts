@@ -1,3 +1,4 @@
+import { ActivityArea } from "./ActivityArea";
 import { Address } from "./Address";
 import { ClientCategory } from "./ClientCategory";
 import { Owner } from "./Owner";
@@ -17,7 +18,7 @@ export class Account {
   accountContacts: Contact[];
   accountAddress: Address;
   //accountCompany: Company;
- // accountActivityArea: ActivityArea;
+  accountActivityArea: ActivityArea;
   accountTurnover: number;
   accountThreshold: number;
   accountBilledAmount: number;

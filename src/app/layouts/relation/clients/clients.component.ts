@@ -55,10 +55,10 @@ export class ClientsComponent implements OnInit {
     this.cols = [
       { field: 'accountCode', header: 'Code', type: 'string' },
       { field: 'accountName', header: 'Nom', type: 'string' },
-      { field: 'Secteur dactivité', header: 'Secteur dactivité', type: 'string' },
-      { field: 'Seuil', header: 'Seuil', type: 'number' },
+      { field: 'accountAddress'  , child :"adrCode" , header: 'Secteur dactivité', type: 'object' },
+      { field: 'accountThreshold', header: 'Seuil', type: 'number' },
       { field: 'Commercial', header: 'Commercial', type: 'string' },
-      { field: 'Compagnie', header: 'Compagnie', type: 'string' },
+      { field: 'accountCompany', header: 'Compagnie', type: 'string' },
 
     ];
 
