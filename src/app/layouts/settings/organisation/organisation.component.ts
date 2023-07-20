@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from "ngx-spinner";
 import { MessageService } from "primeng/api";
 import {
   FormBuilder,
@@ -19,11 +20,14 @@ export class OrganisationComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   fetchedOrganisation: Organisation;
   organisationForm: FormGroup;
+  logoOrganisation: string;
+  submittedOrg: Organisation = new Organisation();
 
   constructor(
     private organisationService: OrganisationService,
     private formBuilder: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +35,7 @@ export class OrganisationComponent implements OnInit, OnDestroy {
       this.organisationService.findAll().subscribe(
         (data) => {
           this.fetchedOrganisation = data[0];
+          this.logoOrganisation = this.fetchedOrganisation.image;
           this.initForm();
         },
         (error) => {
@@ -43,6 +48,7 @@ export class OrganisationComponent implements OnInit, OnDestroy {
       )
     );
   }
+
   initForm() {
     this.organisationForm = this.formBuilder.group({
       organisationCode: new FormControl(
@@ -137,6 +143,96 @@ export class OrganisationComponent implements OnInit, OnDestroy {
       ),
     });
   }
+
+  onSubmitForm() {
+    this.submittedOrg.id = this.fetchedOrganisation.id;
+    this.submittedOrg.code = this.organisationForm.value["organisationCode"];
+    this.submittedOrg.nomOrganisation =
+      this.organisationForm.value["organisationName"];
+    this.submittedOrg.description = this.organisationForm.value["description"];
+    this.submittedOrg.telephonePrincipalOrganisation =
+      this.organisationForm.value["telPrincipal"];
+    this.submittedOrg.fax = this.organisationForm.value["fax"];
+    this.submittedOrg.siret = this.organisationForm.value["siret"];
+    this.submittedOrg.professionalTax =
+      this.organisationForm.value["taxeProfessionelle"];
+    this.submittedOrg.taxpayerIdentification =
+      this.organisationForm.value["identificationFiscale"];
+    this.submittedOrg.commonIdentifierCompany =
+      this.organisationForm.value["idCommunEntreprise"];
+    this.submittedOrg.classificationFiscale =
+      this.organisationForm.value["classificationFiscale"];
+    this.submittedOrg.webSite = this.organisationForm.value["siteWeb"];
+    this.submittedOrg.nomAdressSiegePrincipal =
+      this.organisationForm.value["nAdresseSiegePrincipal"];
+    this.submittedOrg.firstAddressLine =
+      this.organisationForm.value["premiereLigneAdresse"];
+    this.submittedOrg.secondAddressLine =
+      this.organisationForm.value["deuxiemeLigneAdresse"];
+    this.submittedOrg.city = this.organisationForm.value["ville"];
+    this.submittedOrg.zipCode = this.organisationForm.value["codeZip"];
+    this.submittedOrg.country = this.organisationForm.value["pays"];
+    this.submittedOrg.nomContactPrincipal =
+      this.organisationForm.value["nomContactPrincipal"];
+    this.submittedOrg.prenomContactPrincipal =
+      this.organisationForm.value["prenomContactPrincipal"];
+    this.submittedOrg.emailContactPrincipal =
+      this.organisationForm.value["emailContactPrincipal"];
+    this.submittedOrg.telephoneContactPrincipal =
+      this.organisationForm.value["telContactPrincipal"];
+    this.submittedOrg.generaleCondition =
+      this.organisationForm.value["conditionsGenerals"];
+    this.submittedOrg.nomContactLogistique =
+      this.organisationForm.value["nomContactLogistique"];
+    this.submittedOrg.prenomContactLogistique =
+      this.organisationForm.value["prenomContactLogistique"];
+    this.submittedOrg.emailContactLogistique =
+      this.organisationForm.value["emailContactLogistique"];
+    this.submittedOrg.telephoneContactLogistique =
+      this.organisationForm.value["telContactLogistique"];
+    this.submittedOrg.comment =
+      this.organisationForm.value["commentContactLogistique"];
+    this.submittedOrg.image = this.logoOrganisation;
+    this.submittedOrg.addressType = 1;
+
+    console.log(this.submittedOrg);
+
+    this.spinner.show();
+    this.subscriptions.add(
+      this.organisationService.set(this.submittedOrg).subscribe(
+        (data) => {
+          this.messageService.add({
+            severity: "success",
+            summary: "Edition",
+            detail: "Elément est Enregistré avec succès",
+          });
+          this.spinner.hide();
+        },
+        (error) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Erreur",
+            detail: "Erreur",
+          });
+          console.log(error);
+
+          this.spinner.hide();
+        }
+      )
+    );
+  }
+
+  myUploader(event) {
+    let fileReader: FileReader = new FileReader();
+    fileReader.readAsDataURL(event.target.files[0]);
+    fileReader.onload = () => {
+      console.log(fileReader.result);
+      this.logoOrganisation = (fileReader.result as string).split(
+        ","
+      )[1] as any;
+    };
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
