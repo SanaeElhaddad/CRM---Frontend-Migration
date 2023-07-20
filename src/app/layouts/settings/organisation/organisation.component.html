@@ -1,54 +1,84 @@
-<div>
+<form [formGroup]="organisationForm" *ngIf="organisationForm">
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col">
       <label for="code">Code *</label>
-      <input id="code" type="text" pInputText />
+      <input
+        id="code"
+        formControlName="organisationCode"
+        type="text"
+        pInputText
+      />
     </div>
     <div class="p-field p-col">
       <label for="nomOrganisation">Nom de l'organisation *</label>
-      <input id="nomOrganisation" type="text" pInputText />
+      <input
+        id="nomOrganisation"
+        formControlName="organisationName"
+        type="text"
+        pInputText
+      />
     </div>
     <div class="p-field p-col">
       <label for="desc">Description</label>
-      <input id="desc" type="text" pInputText />
+      <input id="desc" formControlName="description" type="text" pInputText />
     </div>
   </div>
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col">
       <label for="tpo">Telephone principal de l'organisation</label>
-      <input id="tpo" type="text" pInputText />
+      <input id="tpo" formControlName="telPrincipal" type="text" pInputText />
     </div>
     <div class="p-field p-col">
       <label for="fax">Fax</label>
-      <input id="fax" type="text" pInputText />
+      <input id="fax" formControlName="fax" type="text" pInputText />
     </div>
     <div class="p-field p-col">
       <label for="siret">SIRET *</label>
-      <input id="siret" type="text" pInputText />
+      <input id="siret" formControlName="siret" type="text" pInputText />
     </div>
   </div>
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col">
       <label for="tpo">Taxe professionelle *</label>
-      <input id="tpo" type="text" pInputText />
+      <input
+        id="tpo"
+        type="text"
+        formControlName="taxeProfessionelle"
+        pInputText
+      />
     </div>
     <div class="p-field p-col">
       <label for="if">Identification fiscale *</label>
-      <input id="if" type="text" pInputText />
+      <input
+        id="if"
+        type="text"
+        formControlName="identificationFiscale"
+        pInputText
+      />
     </div>
     <div class="p-field p-col">
       <label for="ice">Identifiant commun de l'entreprise*</label>
-      <input id="ice" type="text" pInputText />
+      <input
+        id="ice"
+        type="text"
+        formControlName="idCommunEntreprise"
+        pInputText
+      />
     </div>
   </div>
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col">
       <label for="tpo">Classification fiscale</label>
-      <input id="tpo" type="text" pInputText />
+      <input
+        id="tpo"
+        type="text"
+        formControlName="classificationFiscale"
+        pInputText
+      />
     </div>
     <div class="p-field p-col">
       <label for="if">Site web</label>
-      <input id="if" type="text" pInputText />
+      <input id="if" type="text" formControlName="siteWeb" pInputText />
     </div>
     <div class="p-field p-col">
       <p-fileUpload
@@ -71,27 +101,47 @@
       <p-panel header="Adresse" [toggleable]="true">
         <div class="p-field">
           <label for="adr_sie_pr">Nom d''adresse du siège principal*</label>
-          <input id="adr_sie_pr" type="text" pInputText />
+          <input
+            id="adr_sie_pr"
+            type="text"
+            formControlName="nAdresseSiegePrincipal"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="pr_lig_add">Première ligne d'adresse*</label>
-          <input id="pr_lig_add" type="text" pInputText />
+          <input
+            id="pr_lig_add"
+            type="text"
+            formControlName="premiereLigneAdresse"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="dex_lig_add">Deuxième ligne d'adresse</label>
-          <input id="dex_lig_add" type="text" pInputText />
+          <input
+            id="dex_lig_add"
+            type="text"
+            formControlName="deuxiemeLigneAdresse"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="ville">Ville*</label>
-          <input id="ville" type="text" pInputText />
+          <input id="ville" type="text" formControlName="ville" pInputText />
         </div>
         <div class="p-field">
           <label for="code_zip">Code Zip*</label>
-          <input id="code_zip" type="text" pInputText />
+          <input
+            id="code_zip"
+            type="text"
+            formControlName="codeZip"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="pays">Pays*</label>
-          <input id="pays" type="text" pInputText />
+          <input id="pays" type="text" formControlName="pays" pInputText />
         </div>
       </p-panel>
     </div>
@@ -99,19 +149,39 @@
       <p-panel header="Contact Principal" [toggleable]="true">
         <div class="p-field">
           <label for="nom">Nom*</label>
-          <input id="nom" type="text" pInputText />
+          <input
+            id="nom"
+            type="text"
+            formControlName="nomContactPrincipal"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="prenom">Prénom</label>
-          <input id="prenom" type="text" pInputText />
+          <input
+            id="prenom"
+            type="text"
+            formControlName="prenomContactPrincipal"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="email"> Email*</label>
-          <input id="email" type="text" pInputText />
+          <input
+            id="email"
+            type="text"
+            formControlName="emailContactPrincipal"
+            pInputText
+          />
         </div>
         <div class="p-field">
           <label for="telephone">Téléphone</label>
-          <input id="telephone" type="text" pInputText />
+          <input
+            id="telephone"
+            type="text"
+            formControlName="telContactPrincipal"
+            pInputText
+          />
         </div>
       </p-panel>
       <p-panel header="Conditions générales">
@@ -119,6 +189,7 @@
           rows="5"
           cols="30"
           pInputTextarea
+          formControlName="conditionsGenerals"
           autoResize="autoResize"
         ></textarea>
       </p-panel>
@@ -127,19 +198,19 @@
       <p-panel header="Contact Logistique" [toggleable]="true">
         <div class="p-field">
           <label for="nomL">Nom*</label>
-          <input id="nomL" type="text" pInputText />
+          <input id="nomL" type="text" formControlName="nomContactLogistique" pInputText />
         </div>
         <div class="p-field">
           <label for="prenomL">Prénom</label>
-          <input id="prenomL" type="text" pInputText />
+          <input id="prenomL" type="text" formControlName="prenomContactLogistique" pInputText />
         </div>
         <div class="p-field">
           <label for="emailL"> Email*</label>
-          <input id="emailL" type="text" pInputText />
+          <input id="emailL" type="text" formControlName="emailContactLogistique" pInputText />
         </div>
         <div class="p-field">
           <label for="telephoneL">Téléphone</label>
-          <input id="telephoneL" type="text" pInputText />
+          <input id="telephoneL" type="text" formControlName="telContactLogistique" pInputText />
         </div>
         <div class="p-field">
           <label for="comment">Commentaire</label>
@@ -149,6 +220,7 @@
             rows="5"
             cols="30"
             pInputTextarea
+            formControlName="commentContactLogistique"
             autoResize="autoResize"
           ></textarea>
         </div>
@@ -158,5 +230,4 @@
   <div class="d-flex justify-content-center mt-4">
     <button type="button" class="btn btn-success">Valider</button>
   </div>
-</div>
-
+</form>
