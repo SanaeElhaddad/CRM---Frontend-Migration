@@ -18,5 +18,8 @@ export * from "./controle-type-response";
 export * from "./controle-type";
 export * from "./control-state";
 export * from "./StatusAction";
+<<<<<<< HEAD
 export * from "./Organisation";
+=======
 export * from "./accounts";
+>>>>>>> f6d04a0d88b79e49ab3dbd61ac1da0450f0a7d76
