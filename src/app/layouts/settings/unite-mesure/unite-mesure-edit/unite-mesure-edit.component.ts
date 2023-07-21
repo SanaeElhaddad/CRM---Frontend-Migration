@@ -41,7 +41,7 @@ export class UniteMesureEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.editMode === 1) {
       this.selectedUom = new Uom();
-      this.title = "Ajouter statut de l'action";
+      this.title = "Ajouter Unité de mesure";
     } else {
       console.log(this.selectedUom.uomCode);
     }

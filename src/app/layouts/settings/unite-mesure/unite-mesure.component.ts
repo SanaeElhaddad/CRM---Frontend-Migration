@@ -52,39 +52,56 @@ export class UniteMesureComponent implements OnInit {
     this.loadData();
   }
 
-  onNameSearch(event: any) {}
-
-  loadData(search: string = "") {
+  loadData() {
     this.spinner.show();
     if (this.searchQuery === "") {
       this.subscriptions.add(
         this.uomService.size().subscribe((data) => (this.collectionSize = data))
       );
+      this.subscriptions.add(
+        this.uomService.findAll().subscribe(
+          (data) => {
+            this.uomList = data;
+            this.spinner.hide();
+            console.log(data);
+          },
+          (error) => {
+            this.spinner.hide();
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: JSON.stringify(error),
+            });
+          }
+        )
+      );
     } else {
       this.subscriptions.add(
+        this.uomService.sizeSearch(this.searchQuery).subscribe((data) => {
+          this.collectionSize = data;
+        })
+      );
+
+      this.subscriptions.add(
         this.uomService
-          .sizeSearch(this.searchQuery)
-          .subscribe((data) => (this.collectionSize = data))
+          .findPagination(this.page, this.collectionSize, this.searchQuery)
+          .subscribe(
+            (data) => {
+              this.uomList = data;
+              this.spinner.hide();
+              console.log(data);
+            },
+            (error) => {
+              this.spinner.hide();
+              this.messageService.add({
+                severity: "error",
+                summary: "Erreur",
+                detail: JSON.stringify(error),
+              });
+            }
+          )
       );
     }
-
-    this.subscriptions.add(
-      this.uomService.findAll().subscribe(
-        (data) => {
-          this.uomList = data;
-          this.spinner.hide();
-          console.log(data);
-        },
-        (error) => {
-          this.spinner.hide();
-          this.messageService.add({
-            severity: "error",
-            summary: "Erreur",
-            detail: JSON.stringify(error),
-          });
-        }
-      )
-    );
   }
 
   reset() {
@@ -100,11 +117,11 @@ export class UniteMesureComponent implements OnInit {
       buffer.append(`uomCode~${this.codeSearch.uomCode}`);
     }
     if (this.uomDescSearch != null && this.uomDescSearch !== "") {
-      buffer.append(`description~${this.uomDescSearch}`);
+      buffer.append(`uomDescription~${this.uomDescSearch}`);
     }
     this.page = 0;
     this.searchQuery = buffer.getValue();
-    this.loadData(this.searchQuery);
+    this.loadData();
   }
   onObjectEdited(event: EmittedOBject) {
     this.selectedUoms = event.object;
