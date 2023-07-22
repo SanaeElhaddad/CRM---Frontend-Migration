@@ -7,14 +7,8 @@ export class ActivityArea {
   activityAreaDescription: string;
   activityAreaCreationDate: Date;
   activityAreaUpdateDate: Date;
-  activityAreaAccounts: Account[];
+  // activityAreaAccounts: Account[];
   //activityAreaCompanies: Company[];
-  activityAreaUser: User;
-
-  constructor() {
-    this.activityAreaAccounts = [];
-    //this.activityAreaCompanies = [];
-  }
 }
 
 // You'll need to create TypeScript models for other referenced classes like Account, Company, User, etc.

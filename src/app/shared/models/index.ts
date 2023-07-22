@@ -21,3 +21,5 @@ export * from "./StatusAction";
 export * from "./Organisation";
 export * from "./accounts";
 export * from "./uom";
+export * from "./ActivityArea";
+export * from "./Setting";

@@ -54,6 +54,7 @@ export class UniteMesureComponent implements OnInit {
 
   loadData() {
     this.spinner.show();
+
     if (this.searchQuery === "") {
       this.subscriptions.add(
         this.uomService.size().subscribe((data) => (this.collectionSize = data))
@@ -152,6 +153,7 @@ export class UniteMesureComponent implements OnInit {
                     summary: "Suppression",
                     detail: "Elément Supprimer avec Succés",
                   });
+                  this.confirmationService.close();
                   this.loadData();
                 },
                 (error) => {
@@ -160,6 +162,7 @@ export class UniteMesureComponent implements OnInit {
                     summary: "Erreur",
                     detail: JSON.stringify(error),
                   });
+                  this.confirmationService.close();
                   this.spinner.hide();
                 },
                 () => {
