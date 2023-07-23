@@ -1,3 +1,4 @@
+import { GlobalService } from "./../../../shared/services/api/global.service";
 import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
 import { EmsBuffer } from "./../../../shared/utils/ems-buffer";
 import { ActivityAreaService } from "./../../../shared/services/api/activity-area.service";
@@ -29,12 +30,14 @@ export class SecteurActiviteComponent implements OnInit {
   subscriptions = new Subscription();
   selectedactivityAreas: Array<ActivityArea> = [];
   codeList: Array<ActivityArea> = [];
+  activityAreaExportedList: Array<ActivityArea> = [];
 
   constructor(
     private spinner: NgxSpinnerService,
     private messageService: MessageService,
     private activityAreaService: ActivityAreaService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
@@ -140,9 +143,112 @@ export class SecteurActiviteComponent implements OnInit {
     }
   }
   loadDataLazy(event) {}
-  onExportExcel(event) {}
-  onExportPdf(event) {}
+  onExportExcel(event) {
+    if (this.searchQuery !== "") {
+      this.subscriptions.add(
+        this.activityAreaService.find(this.searchQuery).subscribe(
+          (data) => {
+            this.activityAreaExportedList = data;
+            this.globalService.generateExcel(
+              event,
+              this.activityAreaExportedList,
+              this.className,
+              this.titleList
+            );
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
 
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    } else {
+      this.subscriptions.add(
+        this.activityAreaService.findAll().subscribe(
+          (data) => {
+            this.activityAreaExportedList = data;
+            this.globalService.generateExcel(
+              event,
+              this.activityAreaExportedList,
+              this.className,
+              this.titleList
+            );
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    }
+  }
+  onExportPdf(event) {
+    if (this.searchQuery !== "") {
+      this.subscriptions.add(
+        this.activityAreaService.find(this.searchQuery).subscribe(
+          (data) => {
+            this.activityAreaExportedList = data;
+            this.globalService.generatePdf(
+              event,
+              this.activityAreaExportedList,
+              this.className,
+              this.titleList
+            );
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    } else {
+      this.subscriptions.add(
+        this.activityAreaService.findAll().subscribe(
+          (data) => {
+            this.activityAreaExportedList = data;
+            this.globalService.generatePdf(
+              event,
+              this.activityAreaExportedList,
+              this.className,
+              this.titleList
+            );
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    }
+  }
   deleteAll() {
     if (this.selectedactivityAreas.length >= 1) {
       this.confirmationService.confirm({
@@ -159,7 +265,7 @@ export class SecteurActiviteComponent implements OnInit {
                     summary: "Suppression",
                     detail: "Elément Supprimer avec Succés",
                   });
-                    this.confirmationService.close();
+                  this.confirmationService.close();
 
                   this.loadData();
                 },

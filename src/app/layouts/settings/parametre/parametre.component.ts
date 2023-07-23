@@ -1,3 +1,4 @@
+import { GlobalService } from "./../../../shared/services/api/global.service";
 import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
 import { EmsBuffer } from "./../../../shared/utils/ems-buffer";
 import { SettingsService } from "./../../../shared/services/api/settings.service";
@@ -28,12 +29,14 @@ export class ParametreComponent implements OnInit {
   subscriptions = new Subscription();
   selectedSettings: Array<Setting> = [];
   codeList: Array<Setting> = [];
+  parametresExportList: Array<Setting> = [];
 
   constructor(
     private spinner: NgxSpinnerService,
     private settingsService: SettingsService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
@@ -135,8 +138,67 @@ export class ParametreComponent implements OnInit {
     }
   }
   loadDataLazy(event) {}
-  onExportExcel(event) {}
-  onExportPdf(event) {}
+  onExportExcel(event) {
+    this.subscriptions.add(
+      this.settingsService.find(this.searchQuery).subscribe(
+        (data) => {
+          this.parametresExportList = data;
+          if (event != null) {
+            this.globalService.generateExcel(
+              event,
+              this.parametresExportList,
+              this.className,
+              this.titleList
+            );
+          } else {
+            this.globalService.generateExcel(
+              this.cols,
+              this.parametresExportList,
+              this.className,
+              this.titleList
+            );
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Erreur",
+            detail: "Erreur",
+          });
+
+          this.spinner.hide();
+        },
+        () => this.spinner.hide()
+      )
+    );
+  }
+  onExportPdf(event) {
+    this.subscriptions.add(
+      this.settingsService.find(this.searchQuery).subscribe(
+        (data) => {
+          this.parametresExportList = data;
+          this.globalService.generatePdf(
+            event,
+            this.parametresExportList,
+            this.className,
+            this.titleList
+          );
+          this.spinner.hide();
+        },
+        (error) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Erreur",
+            detail: "Erreur",
+          });
+
+          this.spinner.hide();
+        },
+        () => this.spinner.hide()
+      )
+    );
+  }
 
   deleteAll() {
     if (this.selectedSettings.length >= 1) {

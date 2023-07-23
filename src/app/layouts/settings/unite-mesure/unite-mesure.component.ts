@@ -1,3 +1,4 @@
+import { GlobalService } from "./../../../shared/services/api/global.service";
 import { EmsBuffer } from "./../../../shared/utils/ems-buffer";
 import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
 import { ConfirmationService } from "primeng/api";
@@ -29,12 +30,14 @@ export class UniteMesureComponent implements OnInit {
   subscriptions = new Subscription();
   selectedUoms: Array<Uom> = [];
   codeList: Array<Uom> = [];
+  uomExportList: Array<Uom> = [];
 
   constructor(
     private spinner: NgxSpinnerService,
     private uomService: UomService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
@@ -134,8 +137,130 @@ export class UniteMesureComponent implements OnInit {
     }
   }
   loadDataLazy(event) {}
-  onExportExcel(event) {}
-  onExportPdf(event) {}
+  onExportExcel(event) {
+    if (this.searchQuery !== "") {
+      this.subscriptions.add(
+        this.uomService.find(this.searchQuery).subscribe(
+          (data) => {
+            this.uomExportList = data;
+            if (event != null) {
+              this.globalService.generateExcel(
+                event,
+                this.uomExportList,
+                this.className,
+                this.titleList
+              );
+            } else {
+              this.globalService.generateExcel(
+                this.cols,
+                this.uomExportList,
+                this.className,
+                this.titleList
+              );
+            }
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    } else {
+      this.subscriptions.add(
+        this.uomService.findAll().subscribe(
+          (data) => {
+            this.uomExportList = data;
+            if (event != null) {
+              this.globalService.generateExcel(
+                event,
+                this.uomExportList,
+                this.className,
+                this.titleList
+              );
+            } else {
+              this.globalService.generateExcel(
+                this.cols,
+                this.uomExportList,
+                this.className,
+                this.titleList
+              );
+            }
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    }
+  }
+  onExportPdf(event) {
+    if (this.searchQuery !== "") {
+      this.subscriptions.add(
+        this.uomService.find(this.searchQuery).subscribe(
+          (data) => {
+            this.uomExportList = data;
+            this.globalService.generatePdf(
+              event,
+              this.uomExportList,
+              this.className,
+              this.titleList
+            );
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    } else {
+      this.subscriptions.add(
+        this.uomService.findAll().subscribe(
+          (data) => {
+            this.uomExportList = data;
+            this.globalService.generatePdf(
+              event,
+              this.uomExportList,
+              this.className,
+              this.titleList
+            );
+            this.spinner.hide();
+          },
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+
+            this.spinner.hide();
+          },
+          () => this.spinner.hide()
+        )
+      );
+    }
+  }
 
   deleteAll() {
     if (this.selectedUoms.length >= 1) {
