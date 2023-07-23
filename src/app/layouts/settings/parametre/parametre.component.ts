@@ -1,12 +1,12 @@
-import { GlobalService } from "./../../../shared/services/api/global.service";
 import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
 import { EmsBuffer } from "./../../../shared/utils/ems-buffer";
-import { SettingsService } from "./../../../shared/services/api/settings.service";
 import { Setting } from "./../../../shared/models/";
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { SettingsService } from "./../../../shared/services/api/settings.service";
+import { GlobalService } from "./../../../shared/services/api/global.service";
 
 @Component({
   selector: "app-parametre",

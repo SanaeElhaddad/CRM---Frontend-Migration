@@ -64,6 +64,7 @@ import { StatusActionEditComponent } from './status-action/status-action-edit/st
 import { UniteMesureEditComponent } from './unite-mesure/unite-mesure-edit/unite-mesure-edit.component';
 import { SecteurActiviteEditComponent } from './secteur-activite/secteur-activite-edit/secteur-activite-edit.component';
 import { ParametreEditComponent } from './parametre/parametre-edit/parametre-edit.component';
+import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edit.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { ParametreEditComponent } from './parametre/parametre-edit/parametre-edi
     StatusActionEditComponent,
     UniteMesureEditComponent,
     SecteurActiviteEditComponent,
-    ParametreEditComponent
+    ParametreEditComponent,
+    CategorieEditComponent
   ],
   imports: [
     CommonModule,

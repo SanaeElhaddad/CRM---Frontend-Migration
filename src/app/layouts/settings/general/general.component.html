@@ -1,5 +1,5 @@
 <p-tabView>
-  <p-tabPanel header="Organisation">
+  <p-tabPanel [cache]="false" header="Organisation">
     <app-organisation></app-organisation>
   </p-tabPanel>
   <!-- <p-tabPanel [cache]="false" header="Statut de l'action">
@@ -11,10 +11,10 @@
   <!-- <p-tabPanel header="Statut du devis">
     <app-status-devis></app-status-devis>
   </p-tabPanel> -->
-  <p-tabPanel header="Unite de mesure">
+  <p-tabPanel [cache]="false" header="Unite de mesure">
     <app-unite-mesure></app-unite-mesure>
   </p-tabPanel>
-  <p-tabPanel header="Secteur d'activité">
+  <p-tabPanel [cache]="false" header="Secteur d'activité">
     <app-secteur-activite></app-secteur-activite>
   </p-tabPanel>
   <!-- <p-tabPanel header="Statut du ticket">
@@ -23,16 +23,16 @@
   <!-- <p-tabPanel header="Statut opportunité">
     <app-status-opportunite></app-status-opportunite>
   </p-tabPanel> -->
-  <p-tabPanel header="Paramètre">
+  <p-tabPanel [cache]="false" header="Paramètre">
     <app-parametre></app-parametre>
   </p-tabPanel>
-  <p-tabPanel header="Catégorie">
+  <p-tabPanel [cache]="false" header="Catégorie">
     <app-categorie></app-categorie>
   </p-tabPanel>
   <p-tabPanel header="Prérequis">
     <app-prerequis></app-prerequis>
   </p-tabPanel>
-  <p-tabPanel header="Habilitation">
+  <p-tabPanel [cache]="false" header="Habilitation">
     <app-habilitation></app-habilitation>
   </p-tabPanel>
 </p-tabView>

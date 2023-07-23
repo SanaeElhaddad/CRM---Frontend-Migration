@@ -8,7 +8,9 @@ import { ControlState } from '../../models/control-state';
 import { NotificationState } from '../../models/notification-state';
 
 
-@Injectable()
+@Injectable(
+  
+)
 export class NotificationService extends EmsService<Notification> {
 
   constructor(proxy: ProxyService) {

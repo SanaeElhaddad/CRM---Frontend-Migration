@@ -1,10 +1,10 @@
-import { ActivityAreaService } from "./../../../../shared/services/api/activity-area.service";
 import { Subscription } from "rxjs";
 import { ActivityArea } from "./../../../../shared/models/";
 import { Component, OnInit, Output, Input, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MessageService } from "primeng/api";
+import { ActivityAreaService } from "./../../../../shared/services/api/activity-area.service";
 
 @Component({
   selector: "app-secteur-activite-edit",

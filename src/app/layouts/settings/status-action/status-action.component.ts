@@ -92,7 +92,7 @@ export class StatusActionComponent implements OnInit, OnDestroy {
     this.loadData();
   }
   onSearchClicked() {
-  
+
   }
   onObjectEdited(event: EmittedOBject) {
     if (event.operationMode === 1) {

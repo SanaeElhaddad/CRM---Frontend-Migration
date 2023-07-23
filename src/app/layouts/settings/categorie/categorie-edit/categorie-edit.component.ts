@@ -1,50 +1,53 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { ClientCategoryService } from "./../../../../shared/services/api/client-category.service";
+import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MessageService } from "primeng/api";
 import { Subscription } from "rxjs";
-import { Setting } from "./../../../../shared/models";
-import { SettingsService } from "./../../../../shared/services/api/settings.service";
+import { ClientCategory } from "./../../../../shared/models";
 
 @Component({
-  selector: "app-parametre-edit",
-  templateUrl: "./parametre-edit.component.html",
-  styleUrls: ["./parametre-edit.component.css"],
+  selector: "app-categorie-edit",
+  templateUrl: "./categorie-edit.component.html",
+  styleUrls: ["./categorie-edit.component.css"],
 })
-export class ParametreEditComponent implements OnInit {
-  @Input() selectedSetting = new Setting();
+export class CategorieEditComponent implements OnInit {
+  @Input() selectedClientCategory = new ClientCategory();
   @Input() editMode: number;
   @Output() showDialog = new EventEmitter<boolean>();
 
   isFormSubmitted = false;
   displayDialog: boolean;
-  title = "Modifier Paramètre";
+  title = "Modifier Categorie Client";
   subscriptions = new Subscription();
 
-  settingsForm: FormGroup;
+  clientCategoryForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private messageService: MessageService,
-    private settingsService: SettingsService
+    private clientCategoryService: ClientCategoryService
   ) {}
 
   ngOnInit(): void {
     if (this.editMode === 1) {
-      this.selectedSetting = new Setting();
+      this.selectedClientCategory = new ClientCategory();
       this.title = "Ajouter Paramètre";
     } else {
-      console.log(this.selectedSetting.code);
+      console.log(this.selectedClientCategory.code);
     }
     this.displayDialog = true;
     this.initForm();
   }
 
   initForm() {
-    this.settingsForm = this.formBuilder.group({
-      settingCode: [this.selectedSetting.code, Validators.required],
-      settingValue: [this.selectedSetting.value],
+    this.clientCategoryForm = this.formBuilder.group({
+      ClientCategoryCode: [
+        this.selectedClientCategory.code,
+        Validators.required,
+      ],
+      ClientCategoryDesc: [this.selectedClientCategory.description],
     });
   }
 
@@ -57,11 +60,13 @@ export class ParametreEditComponent implements OnInit {
   onSubmitForm() {
     this.spinner.show();
 
-    this.selectedSetting.code = this.settingsForm.value["settingCode"];
-    this.selectedSetting.value = this.settingsForm.value["settingValue"];
+    this.selectedClientCategory.code =
+      this.clientCategoryForm.value["ClientCategoryCode"];
+    this.selectedClientCategory.description =
+      this.clientCategoryForm.value["ClientCategoryDesc"];
 
     this.subscriptions.add(
-      this.settingsService.set(this.selectedSetting).subscribe(
+      this.clientCategoryService.set(this.selectedClientCategory).subscribe(
         (data) => {
           this.messageService.add({
             severity: "success",
@@ -85,8 +90,8 @@ export class ParametreEditComponent implements OnInit {
     );
   }
   resetForm() {
-    this.selectedSetting.code = null;
-    this.selectedSetting.value = null;
+    this.selectedClientCategory.code = null;
+    this.selectedClientCategory.description = null;
   }
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
