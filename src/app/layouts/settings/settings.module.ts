@@ -65,6 +65,7 @@ import { UniteMesureEditComponent } from './unite-mesure/unite-mesure-edit/unite
 import { SecteurActiviteEditComponent } from './secteur-activite/secteur-activite-edit/secteur-activite-edit.component';
 import { ParametreEditComponent } from './parametre/parametre-edit/parametre-edit.component';
 import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edit.component';
+import { PrerequisEditComponent } from './prerequis/prerequis-edit/prerequis-edit.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edi
     UniteMesureEditComponent,
     SecteurActiviteEditComponent,
     ParametreEditComponent,
-    CategorieEditComponent
+    CategorieEditComponent,
+    PrerequisEditComponent
   ],
   imports: [
     CommonModule,
