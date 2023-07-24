@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusOpportuniteComponent } from './status-opportunite.component';
+import { BuisnessTypeComponent } from './buisness-type.component';
 
-describe('StatusOpportuniteComponent', () => {
-  let component: StatusOpportuniteComponent;
-  let fixture: ComponentFixture<StatusOpportuniteComponent>;
+describe('BuisnessTypeComponent', () => {
+  let component: BuisnessTypeComponent;
+  let fixture: ComponentFixture<BuisnessTypeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatusOpportuniteComponent ]
+      declarations: [ BuisnessTypeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatusOpportuniteComponent);
+    fixture = TestBed.createComponent(BuisnessTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusCompteComponent } from './status-compte.component';
+import { HabilitationEditComponent } from './habilitation-edit.component';
 
-describe('StatusCompteComponent', () => {
-  let component: StatusCompteComponent;
-  let fixture: ComponentFixture<StatusCompteComponent>;
+describe('HabilitationEditComponent', () => {
+  let component: HabilitationEditComponent;
+  let fixture: ComponentFixture<HabilitationEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatusCompteComponent ]
+      declarations: [ HabilitationEditComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatusCompteComponent);
+    fixture = TestBed.createComponent(HabilitationEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

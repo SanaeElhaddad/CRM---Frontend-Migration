@@ -1,4 +1,7 @@
-<p-panel header="{{ 'Filtre habilitation' | translate }}" [toggleable]="true">
+<p-panel
+  header="{{ 'Filtre type d\'affaire' | translate }}"
+  [toggleable]="true"
+>
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col">
       <label class="font-weight-bold">{{ "Code" | translate }}</label
@@ -15,7 +18,7 @@
       <label class="font-weight-bold">{{ "Description" | translate }}</label
       ><br />
       <input
-        [(ngModel)]="habilitationDescSearch"
+        [(ngModel)]="businessTypeDescSearch"
         field="description"
         pInputText
       />
@@ -36,7 +39,7 @@
 <app-data-table
   [className]="className"
   [cols]="cols"
-  [objectList]="habilitationList"
+  [objectList]="businessTypeList"
   [collectionSize]="collectionSize"
   [size]="size"
   (objectEdited)="onObjectEdited($event)"
@@ -55,7 +58,7 @@
 <div *ngIf="showDialog == true">
   <app-buisness-type-edit
     [editMode]="editMode"
-    [selectedHabilitation]="selectedHabilitations[0]"
+    [selectedBusinessType]="selectedBusinessTypes[0]"
     (showDialog)="onShowDialog($event)"
   >
   </app-buisness-type-edit>

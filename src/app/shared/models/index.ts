@@ -25,3 +25,4 @@ export * from "./ActivityArea";
 export * from "./Setting";
 export * from "./column";
 export * from "./filter";
+export * from "./habilitation";

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusTicketComponent } from './status-ticket.component';
+import { BuisnessTypeEditComponent } from './buisness-type-edit.component';
 
-describe('StatusTicketComponent', () => {
-  let component: StatusTicketComponent;
-  let fixture: ComponentFixture<StatusTicketComponent>;
+describe('BuisnessTypeEditComponent', () => {
+  let component: BuisnessTypeEditComponent;
+  let fixture: ComponentFixture<BuisnessTypeEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatusTicketComponent ]
+      declarations: [ BuisnessTypeEditComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatusTicketComponent);
+    fixture = TestBed.createComponent(BuisnessTypeEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

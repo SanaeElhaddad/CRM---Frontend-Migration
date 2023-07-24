@@ -45,14 +45,9 @@ import { AccordionModule, AccordionTab } from "primeng/accordion";
 import { NgxPrintModule } from "ngx-print";
 import { GeneralComponent } from "./general/general.component";
 
-import { StatusTicketComponent } from "./status-ticket/status-ticket.component";
 import { OrganisationComponent } from "./organisation/organisation.component";
-import { StatusActionComponent } from "./status-action/status-action.component";
-import { StatusCompteComponent } from "./status-compte/status-compte.component";
-import { StatusDevisComponent } from "./status-devis/status-devis.component";
 import { UniteMesureComponent } from "./unite-mesure/unite-mesure.component";
 import { SecteurActiviteComponent } from "./secteur-activite/secteur-activite.component";
-import { StatusOpportuniteComponent } from "./status-opportunite/status-opportunite.component";
 import { ParametreComponent } from "./parametre/parametre.component";
 import { CategorieComponent } from "./categorie/categorie.component";
 import { PrerequisComponent } from "./prerequis/prerequis.component";
@@ -60,25 +55,23 @@ import { HabilitationComponent } from "./habilitation/habilitation.component";
 import { FileUploadModule } from "primeng/fileupload";
 import { ProductTypeComponent } from "./product-type/product-type.component";
 import { ProductTypeEditComponent } from "./product-type/product-type-edit/product-type-edit.component";
-import { StatusActionEditComponent } from './status-action/status-action-edit/status-action-edit.component';
-import { UniteMesureEditComponent } from './unite-mesure/unite-mesure-edit/unite-mesure-edit.component';
-import { SecteurActiviteEditComponent } from './secteur-activite/secteur-activite-edit/secteur-activite-edit.component';
-import { ParametreEditComponent } from './parametre/parametre-edit/parametre-edit.component';
-import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edit.component';
-import { PrerequisEditComponent } from './prerequis/prerequis-edit/prerequis-edit.component';
+import { StatusActionEditComponent } from "./status-action/status-action-edit/status-action-edit.component";
+import { UniteMesureEditComponent } from "./unite-mesure/unite-mesure-edit/unite-mesure-edit.component";
+import { SecteurActiviteEditComponent } from "./secteur-activite/secteur-activite-edit/secteur-activite-edit.component";
+import { ParametreEditComponent } from "./parametre/parametre-edit/parametre-edit.component";
+import { CategorieEditComponent } from "./categorie/categorie-edit/categorie-edit.component";
+import { PrerequisEditComponent } from "./prerequis/prerequis-edit/prerequis-edit.component";
+import { BuisnessTypeComponent } from "./buisness-type/buisness-type.component";
+import { BuisnessTypeEditComponent } from './buisness-type/buisness-type-edit/buisness-type-edit.component';
+import { HabilitationEditComponent } from './habilitation/habilitation-edit/habilitation-edit.component';
 
 @NgModule({
   declarations: [
     SettingsComponent,
     GeneralComponent,
     OrganisationComponent,
-    StatusActionComponent,
-    StatusCompteComponent,
-    StatusDevisComponent,
     UniteMesureComponent,
-    StatusTicketComponent,
     SecteurActiviteComponent,
-    StatusOpportuniteComponent,
     ParametreComponent,
     CategorieComponent,
     PrerequisComponent,
@@ -90,7 +83,10 @@ import { PrerequisEditComponent } from './prerequis/prerequis-edit/prerequis-edi
     SecteurActiviteEditComponent,
     ParametreEditComponent,
     CategorieEditComponent,
-    PrerequisEditComponent
+    PrerequisEditComponent,
+    BuisnessTypeComponent,
+    BuisnessTypeEditComponent,
+    HabilitationEditComponent,
   ],
   imports: [
     CommonModule,
@@ -128,7 +124,7 @@ import { PrerequisEditComponent } from './prerequis/prerequis-edit/prerequis-edi
     SelectButtonModule,
     AccordionModule,
     NgxPrintModule,
-    NgxPermissionsModule.forChild()
+    NgxPermissionsModule.forChild(),
   ],
 })
 export class SettingsModule {}

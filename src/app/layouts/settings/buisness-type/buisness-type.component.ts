@@ -1,48 +1,47 @@
-import { EmittedOBject } from './../../../shared/components/data-table/emitted-object';
-import { EmsBuffer } from './../../../shared/utils/ems-buffer';
-import { GlobalService } from './../../../shared/services/api/global.service';
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
-import { HabilitationService } from './../../../shared/services/api/habilitation.service';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription } from 'rxjs';
-import { Habilitation } from "./../../../shared/models/habilitation";
+import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
+import { EmsBuffer } from "./../../../shared/utils/ems-buffer";
+import { GlobalService } from "./../../../shared/services/api/global.service";
+import { ConfirmationService } from "primeng/api";
+import { MessageService } from "primeng/api";
+import { BusinessTypeService } from "./../../../shared/services/api/business-type.service";
+import { NgxSpinnerService } from "ngx-spinner";
+import { Subscription } from "rxjs";
+import { BusinessType } from "./../../../shared/models/";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-habilitation",
-  templateUrl: "./habilitation.component.html",
-  styleUrls: ["./habilitation.component.css"],
+  selector: "app-buisness-type",
+  templateUrl: "./buisness-type.component.html",
+  styleUrls: ["./buisness-type.component.css"],
 })
-export class HabilitationComponent implements OnInit {
-  codeSearch: Habilitation;
-  habilitationDescSearch: string;
+export class BuisnessTypeComponent implements OnInit {
+  codeSearch: BusinessType;
+  businessTypeDescSearch: string;
   searchQuery = "";
   page = 0;
   size = 10;
   editMode: number;
   className: string;
   cols: any[];
-  habilitationList: Array<Habilitation> = [];
+  businessTypeList: Array<BusinessType> = [];
   collectionSize: number;
-  titleList = "Habilitation";
+  titleList = "Type d'affaire";
   showDialog: boolean = false;
   subscriptions = new Subscription();
-  selectedHabilitations: Array<Habilitation> = [];
-  codeList: Array<Habilitation> = [];
-  habilitationExportList: Array<Habilitation> = [];
+  selectedBusinessTypes: Array<BusinessType> = [];
+  codeList: Array<BusinessType> = [];
+  businessTypeExportList: Array<BusinessType> = [];
 
   constructor(
     private spinner: NgxSpinnerService,
-    private habilitationService: HabilitationService,
+    private businessTypeService: BusinessTypeService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
-
-    this.className = Habilitation.name;
+    this.className = BusinessType.name;
     this.cols = [
       { field: "code", header: "Code", type: "string" },
 
@@ -61,14 +60,14 @@ export class HabilitationComponent implements OnInit {
 
     if (this.searchQuery === "") {
       this.subscriptions.add(
-        this.habilitationService
+        this.businessTypeService
           .size()
           .subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.habilitationService.findAll().subscribe(
+        this.businessTypeService.findAll().subscribe(
           (data) => {
-            this.habilitationList = data;
+            this.businessTypeList = data;
             this.spinner.hide();
             console.log(data);
           },
@@ -84,7 +83,7 @@ export class HabilitationComponent implements OnInit {
       );
     } else {
       this.subscriptions.add(
-        this.habilitationService
+        this.businessTypeService
           .sizeSearch(this.searchQuery)
           .subscribe((data) => {
             this.collectionSize = data;
@@ -92,11 +91,11 @@ export class HabilitationComponent implements OnInit {
       );
 
       this.subscriptions.add(
-        this.habilitationService
+        this.businessTypeService
           .findPagination(this.page, this.collectionSize, this.searchQuery)
           .subscribe(
             (data) => {
-              this.habilitationList = data;
+              this.businessTypeList = data;
               this.spinner.hide();
               console.log(data);
             },
@@ -115,7 +114,7 @@ export class HabilitationComponent implements OnInit {
 
   reset() {
     this.codeSearch = null;
-    this.habilitationDescSearch = null;
+    this.businessTypeDescSearch = null;
     this.page = 0;
     this.searchQuery = "";
     this.loadData();
@@ -126,17 +125,17 @@ export class HabilitationComponent implements OnInit {
       buffer.append(`code~${this.codeSearch.code}`);
     }
     if (
-      this.habilitationDescSearch != null &&
-      this.habilitationDescSearch !== ""
+      this.businessTypeDescSearch != null &&
+      this.businessTypeDescSearch !== ""
     ) {
-      buffer.append(`description~${this.habilitationDescSearch}`);
+      buffer.append(`description~${this.businessTypeDescSearch}`);
     }
     this.page = 0;
     this.searchQuery = buffer.getValue();
     this.loadData();
   }
   onObjectEdited(event: EmittedOBject) {
-    this.selectedHabilitations = event.object;
+    this.selectedBusinessTypes = event.object;
     this.editMode = event.operationMode;
     if (event.operationMode === 3) {
       this.deleteAll();
@@ -148,20 +147,20 @@ export class HabilitationComponent implements OnInit {
   onExportExcel(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(
-        this.habilitationService.find(this.searchQuery).subscribe(
+        this.businessTypeService.find(this.searchQuery).subscribe(
           (data) => {
-            this.habilitationExportList = data;
+            this.businessTypeExportList = data;
             if (event != null) {
               this.globalService.generateExcel(
                 event,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
             } else {
               this.globalService.generateExcel(
                 this.cols,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
@@ -182,20 +181,20 @@ export class HabilitationComponent implements OnInit {
       );
     } else {
       this.subscriptions.add(
-        this.habilitationService.findAll().subscribe(
+        this.businessTypeService.findAll().subscribe(
           (data) => {
-            this.habilitationExportList = data;
+            this.businessTypeExportList = data;
             if (event != null) {
               this.globalService.generateExcel(
                 event,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
             } else {
               this.globalService.generateExcel(
                 this.cols,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
@@ -219,20 +218,20 @@ export class HabilitationComponent implements OnInit {
   onExportPdf(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(
-        this.habilitationService.find(this.searchQuery).subscribe(
+        this.businessTypeService.find(this.searchQuery).subscribe(
           (data) => {
-            this.habilitationExportList = data;
+            this.businessTypeExportList = data;
             if (event != null) {
               this.globalService.generateExcel(
                 event,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
             } else {
               this.globalService.generateExcel(
                 this.cols,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
@@ -253,20 +252,20 @@ export class HabilitationComponent implements OnInit {
       );
     } else {
       this.subscriptions.add(
-        this.habilitationService.findAll().subscribe(
+        this.businessTypeService.findAll().subscribe(
           (data) => {
-            this.habilitationExportList = data;
+            this.businessTypeExportList = data;
             if (event != null) {
               this.globalService.generatePdf(
                 event,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
             } else {
               this.globalService.generatePdf(
                 this.cols,
-                this.habilitationExportList,
+                this.businessTypeExportList,
                 this.className,
                 this.titleList
               );
@@ -289,15 +288,15 @@ export class HabilitationComponent implements OnInit {
   }
 
   deleteAll() {
-    if (this.selectedHabilitations.length >= 1) {
+    if (this.selectedBusinessTypes.length >= 1) {
       this.confirmationService.confirm({
         message: "Voulez vous vraiment Suprimer?",
         accept: () => {
           this.spinner.show();
-          const ids = this.selectedHabilitations.map((x) => x.id);
+          const ids = this.selectedBusinessTypes.map((x) => x.id);
           this.subscriptions.add(
             ids.forEach((id) => {
-              this.habilitationService.delete(id).subscribe(
+              this.businessTypeService.delete(id).subscribe(
                 (data) => {
                   this.messageService.add({
                     severity: "success",
@@ -329,7 +328,7 @@ export class HabilitationComponent implements OnInit {
 
   onCodeSearch(event: any) {
     this.subscriptions.add(
-      this.habilitationService.find("code~" + event.query).subscribe((data) => {
+      this.businessTypeService.find("code~" + event.query).subscribe((data) => {
         console.log(data);
         this.codeList = data;
         console.log(this.codeList);
