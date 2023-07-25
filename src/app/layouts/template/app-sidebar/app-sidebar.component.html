@@ -1,21 +1,27 @@
 <nav class="page-sidebar">
   <!-- 222d32 -->
-  <div id="sidebar-collapse" style="background-color: #2c3941 !important;">
-    <ul class="side-menu metismenu fixed" style="background-color: #2c3941 !important;">
-
-
-
+  <div id="sidebar-collapse" style="background-color: #2c3941 !important">
+    <ul
+      class="side-menu metismenu fixed"
+      style="background-color: #2c3941 !important"
+    >
       <li>
+        <a class="text-white"
+          ><i class="sidebar-item-icon"
+            ><img
+              src="./assets/img/Menu/Parametre.png"
+              width="20px"
+              height="20px"
+          /></i>
 
-        <a class="text-white "><i class="sidebar-item-icon "><img src="./assets/img/Menu/Parametre.png" width="20px"
-              height="20px"></i>
-
-          <span class="nav-label "> {{'Paramétrage' | translate}}</span><i class="fa fa-angle-left arrow"></i></a>
+          <span class="nav-label"> {{ "Paramétrage" | translate }}</span
+          ><i class="fa fa-angle-left arrow"></i
+        ></a>
         <ul class="nav-2-level collapse">
-
-          <li >
-            <a routerLink="/core/settings/general"  class="m-a"><i class="fa fa-circle-o"></i>
-              {{'General' | translate}}</a>
+          <li>
+            <a routerLink="/core/settings/general" class="m-a"
+              ><i class="fa fa-circle-o"></i> {{ "General" | translate }}</a
+            >
           </li>
 
           <!-- <li >
@@ -35,16 +41,41 @@
       </li>
 
       <li>
+        <a class="text-white"
+          ><i
+            class="sidebar-item-icon pi pi-chart-line"
+            style="font-size: 20px"
+          ></i>
 
-        <a class="text-white "><i class="sidebar-item-icon "><img src="./assets/img/Menu/relation.png" width="20px"
-              height="20px"></i>
-
-          <span class="nav-label "> {{'Relation' | translate}}</span><i class="fa fa-angle-left arrow"></i></a>
+          <span class="nav-label"> {{ "Vente" | translate }}</span
+          ><i class="fa fa-angle-left arrow"></i
+        ></a>
         <ul class="nav-2-level collapse">
+          <li>
+            <a routerLink="/core/vente/devis" class="m-a"
+              ><i class="fa fa-circle-o"></i> {{ "Devis" | translate }}</a
+            >
+          </li>
+        </ul>
+      </li>
 
-          <li >
-            <a routerLink="/core/relation/clients"  class="m-a"><i class="fa fa-circle-o"></i>
-              {{'clients' | translate}}</a>
+      <li>
+        <a class="text-white"
+          ><i class="sidebar-item-icon"
+            ><img
+              src="./assets/img/Menu/relation.png"
+              width="20px"
+              height="20px"
+          /></i>
+
+          <span class="nav-label"> {{ "Relation" | translate }}</span
+          ><i class="fa fa-angle-left arrow"></i
+        ></a>
+        <ul class="nav-2-level collapse">
+          <li>
+            <a routerLink="/core/relation/clients" class="m-a"
+              ><i class="fa fa-circle-o"></i> {{ "clients" | translate }}</a
+            >
           </li>
 
           <!-- <li >
@@ -63,11 +94,7 @@
         </ul>
       </li>
 
-
-
-
-
-        <!-- <li >
+      <!-- <li >
 
 
           <a  class="text-white"><i class="sidebar-item-icon fa " >
@@ -87,26 +114,33 @@
 
         </li> -->
 
+      <li>
+        <a class="text-white"
+          ><i class="sidebar-item-icon fa">
+            <img
+              src="./assets/img/Menu/product.png"
+              width="20px"
+              height="20px"
+            />
+          </i>
+          <span class="nav-label">{{ "Product" | translate }}</span
+          ><i class="fa fa-angle-left arrow"></i
+        ></a>
+        <ul class="nav-2-level collapse">
+          <li>
+            <a routerLink="/core/product" class="m-a"
+              ><img
+                src="./assets/img/Menu/list.png"
+                width="15px"
+                height="15px"
+              />
+              {{ "Lister" | translate }}</a
+            >
+          </li>
+        </ul>
+      </li>
 
-
-        <li >
-
-
-          <a  class="text-white"><i class="sidebar-item-icon fa " >
-              <img src="./assets/img/Menu/product.png" width="20px" height="20px">
-            </i>
-            <span class="nav-label">{{'Product' | translate}}</span><i class="fa fa-angle-left arrow"></i></a>
-          <ul class="nav-2-level collapse" >
-
-            <li >
-              <a routerLink="/core/product" class="m-a"><img src="./assets/img/Menu/list.png" width="15px"
-                  height="15px"> {{'Lister' | translate}}</a>
-            </li>
-          </ul>
-
-        </li>
-
-         <!-- <li >
+      <!-- <li >
 
 
           <a  routerLink="/core/product" class="text-white"><i class="sidebar-item-icon fa " >
@@ -117,16 +151,7 @@
 
         </li>        -->
 
-        <li >
-
-
-
-
-
-        </li>
-
-
-
+      <li></li>
     </ul>
   </div>
 </nav>
