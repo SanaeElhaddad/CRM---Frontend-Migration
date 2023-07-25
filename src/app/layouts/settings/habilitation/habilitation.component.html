@@ -53,9 +53,11 @@
 ></app-data-table>
 
 <div *ngIf="showDialog == true">
-  <app-habilitation-edit>
-    [editMode]="editMode" [selectedHabilitation]="selectedHabilitations[0]"
-    (showDialog)="onShowDialog($event)" >
+  <app-habilitation-edit
+    [editMode]="editMode"
+    [selectedHabilitation]="selectedHabilitations[0]"
+    (showDialog)="onShowDialog($event)"
+  >
   </app-habilitation-edit>
 </div>
 
