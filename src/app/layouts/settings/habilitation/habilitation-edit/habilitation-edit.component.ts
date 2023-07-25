@@ -1,3 +1,4 @@
+import { Privilege } from "./../../../../shared/models/Privilege";
 import { Validators } from "@angular/forms";
 import { MessageService } from "primeng/api";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -16,13 +17,13 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./habilitation-edit.component.css"],
 })
 export class HabilitationEditComponent implements OnInit {
-  @Input() selectedHabilitation = new Habilitation();
+  @Input() selectedHabilitation = new Privilege();
   @Input() editMode: number;
   @Output() showDialog = new EventEmitter<boolean>();
 
   isFormSubmitted = false;
   displayDialog: boolean;
-  title = "Modifier Categorie Client";
+  title = "Modifier Habilitation";
   subscriptions = new Subscription();
 
   HabilitationForm: FormGroup;
@@ -35,20 +36,26 @@ export class HabilitationEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     if (this.editMode === 1) {
-      this.selectedHabilitation = new Habilitation();
+      this.selectedHabilitation = new Privilege();
       this.title = "Ajouter Habilitation";
     } else {
-      console.log(this.selectedHabilitation.code);
+      console.log(this.selectedHabilitation.prvCode);
     }
     this.displayDialog = true;
     this.initForm();
   }
 
   initForm() {
+    console.log(this.selectedHabilitation.prvCode);
+
     this.HabilitationForm = this.formBuilder.group({
-      habilitationCode: [this.selectedHabilitation.code, Validators.required],
-      habilitationDesc: [this.selectedHabilitation.description],
+      habilitationCode: [
+        this.selectedHabilitation.prvCode,
+        Validators.required,
+      ],
+      habilitationDesc: [this.selectedHabilitation.prvDescription],
     });
   }
 
@@ -61,9 +68,9 @@ export class HabilitationEditComponent implements OnInit {
   onSubmitForm() {
     this.spinner.show();
 
-    this.selectedHabilitation.code =
+    this.selectedHabilitation.prvCode =
       this.HabilitationForm.value["habilitationCode"];
-    this.selectedHabilitation.description =
+    this.selectedHabilitation.prvDescription =
       this.HabilitationForm.value["habilitationDesc"];
 
     this.subscriptions.add(
@@ -91,8 +98,8 @@ export class HabilitationEditComponent implements OnInit {
     );
   }
   resetForm() {
-    this.selectedHabilitation.code = null;
-    this.selectedHabilitation.description = null;
+    this.selectedHabilitation.prvCode = null;
+    this.selectedHabilitation.prvDescription = null;
   }
   ngOnDestroy() {
     this.subscriptions.unsubscribe();

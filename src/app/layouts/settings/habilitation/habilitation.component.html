@@ -7,7 +7,7 @@
         [(ngModel)]="codeSearch"
         [suggestions]="codeList"
         (completeMethod)="onCodeSearch($event)"
-        field="code"
+        field="prvCode"
       ></p-autoComplete>
     </div>
 
@@ -53,12 +53,10 @@
 ></app-data-table>
 
 <div *ngIf="showDialog == true">
-  <app-buisness-type-edit
-    [editMode]="editMode"
-    [selectedHabilitation]="selectedHabilitations[0]"
-    (showDialog)="onShowDialog($event)"
-  >
-  </app-buisness-type-edit>
+  <app-habilitation-edit>
+    [editMode]="editMode" [selectedHabilitation]="selectedHabilitations[0]"
+    (showDialog)="onShowDialog($event)" >
+  </app-habilitation-edit>
 </div>
 
 <p-confirmDialog

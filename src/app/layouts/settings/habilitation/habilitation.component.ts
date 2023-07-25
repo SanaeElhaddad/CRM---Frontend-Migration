@@ -1,12 +1,12 @@
-import { EmittedOBject } from './../../../shared/components/data-table/emitted-object';
-import { EmsBuffer } from './../../../shared/utils/ems-buffer';
-import { GlobalService } from './../../../shared/services/api/global.service';
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
-import { HabilitationService } from './../../../shared/services/api/habilitation.service';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription } from 'rxjs';
-import { Habilitation } from "./../../../shared/models/habilitation";
+import { Privilege } from "./../../../shared/models/Privilege";
+import { EmittedOBject } from "./../../../shared/components/data-table/emitted-object";
+import { EmsBuffer } from "./../../../shared/utils/ems-buffer";
+import { GlobalService } from "./../../../shared/services/api/global.service";
+import { ConfirmationService } from "primeng/api";
+import { MessageService } from "primeng/api";
+import { HabilitationService } from "./../../../shared/services/api/habilitation.service";
+import { NgxSpinnerService } from "ngx-spinner";
+import { Subscription } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -15,7 +15,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./habilitation.component.css"],
 })
 export class HabilitationComponent implements OnInit {
-  codeSearch: Habilitation;
+  codeSearch: Privilege;
   habilitationDescSearch: string;
   searchQuery = "";
   page = 0;
@@ -23,14 +23,14 @@ export class HabilitationComponent implements OnInit {
   editMode: number;
   className: string;
   cols: any[];
-  habilitationList: Array<Habilitation> = [];
+  habilitationList: Array<Privilege> = [];
   collectionSize: number;
   titleList = "Habilitation";
   showDialog: boolean = false;
   subscriptions = new Subscription();
-  selectedHabilitations: Array<Habilitation> = [];
-  codeList: Array<Habilitation> = [];
-  habilitationExportList: Array<Habilitation> = [];
+  selectedHabilitations: Array<Privilege> = [];
+  codeList: Array<Privilege> = [];
+  habilitationExportList: Array<Privilege> = [];
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -41,13 +41,12 @@ export class HabilitationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    this.className = Habilitation.name;
+    this.className = Privilege.name;
     this.cols = [
-      { field: "code", header: "Code", type: "string" },
+      { field: "prvCode", header: "Code", type: "string" },
 
       {
-        field: "description",
+        field: "prvDescription",
         header: "Description",
         type: "string",
       },
@@ -122,14 +121,14 @@ export class HabilitationComponent implements OnInit {
   }
   onSearchClicked() {
     const buffer = new EmsBuffer();
-    if (this.codeSearch != null && this.codeSearch.code !== "") {
-      buffer.append(`code~${this.codeSearch.code}`);
+    if (this.codeSearch != null && this.codeSearch.prvCode !== "") {
+      buffer.append(`prvCode~${this.codeSearch.prvDescription}`);
     }
     if (
       this.habilitationDescSearch != null &&
       this.habilitationDescSearch !== ""
     ) {
-      buffer.append(`description~${this.habilitationDescSearch}`);
+      buffer.append(`prvDescription~${this.habilitationDescSearch}`);
     }
     this.page = 0;
     this.searchQuery = buffer.getValue();
@@ -137,7 +136,10 @@ export class HabilitationComponent implements OnInit {
   }
   onObjectEdited(event: EmittedOBject) {
     this.selectedHabilitations = event.object;
+
     this.editMode = event.operationMode;
+    console.log(this.editMode);
+
     if (event.operationMode === 3) {
       this.deleteAll();
     } else {
@@ -294,7 +296,7 @@ export class HabilitationComponent implements OnInit {
         message: "Voulez vous vraiment Suprimer?",
         accept: () => {
           this.spinner.show();
-          const ids = this.selectedHabilitations.map((x) => x.id);
+          const ids = this.selectedHabilitations.map((x) => x.prvId);
           this.subscriptions.add(
             ids.forEach((id) => {
               this.habilitationService.delete(id).subscribe(
@@ -313,6 +315,8 @@ export class HabilitationComponent implements OnInit {
                     summary: "Erreur",
                     detail: "Erreur",
                   });
+                  console.log(JSON.stringify(error));
+
                   this.confirmationService.close();
                   this.spinner.hide();
                 },
@@ -329,11 +333,13 @@ export class HabilitationComponent implements OnInit {
 
   onCodeSearch(event: any) {
     this.subscriptions.add(
-      this.habilitationService.find("code~" + event.query).subscribe((data) => {
-        console.log(data);
-        this.codeList = data;
-        console.log(this.codeList);
-      })
+      this.habilitationService
+        .find("prvCode~" + event.query)
+        .subscribe((data) => {
+          console.log(data);
+          this.codeList = data;
+          console.log(this.codeList);
+        })
     );
   }
 

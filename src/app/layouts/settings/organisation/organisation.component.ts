@@ -226,7 +226,6 @@ export class OrganisationComponent implements OnInit, OnDestroy {
     let fileReader: FileReader = new FileReader();
     fileReader.readAsDataURL(event.target.files[0]);
     fileReader.onload = () => {
-      console.log(fileReader.result);
       this.logoOrganisation = (fileReader.result as string).split(
         ","
       )[1] as any;

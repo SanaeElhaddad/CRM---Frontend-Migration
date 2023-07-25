@@ -26,3 +26,4 @@ export * from "./Setting";
 export * from "./column";
 export * from "./filter";
 export * from "./habilitation";
+export * from "./Privilege";
