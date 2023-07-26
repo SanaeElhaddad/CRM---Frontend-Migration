@@ -1,41 +1,39 @@
 <p-tabView>
-  <p-tabPanel [cache]="false" header="Organisation">
-    <app-organisation></app-organisation>
+  <p-tabPanel header="Organisation">
+    <ng-template pTemplate="content">
+      <app-organisation></app-organisation>
+    </ng-template>
   </p-tabPanel>
-  <!-- <p-tabPanel [cache]="false" header="Statut de l'action">
-    <app-status-action></app-status-action>
-  </p-tabPanel> -->
-  <!-- <p-tabPanel header="Statut du compte">
-    <app-status-compte></app-status-compte>
-  </p-tabPanel> -->
-  <!-- <p-tabPanel header="Statut du devis">
-    <app-status-devis></app-status-devis>
-  </p-tabPanel> -->
   <p-tabPanel [cache]="false" header="Unite de mesure">
-    <app-unite-mesure></app-unite-mesure>
+    <ng-template pTemplate="content">
+      <app-unite-mesure></app-unite-mesure>
+    </ng-template>
   </p-tabPanel>
   <p-tabPanel [cache]="false" header="Secteur d'activité">
-    <app-secteur-activite></app-secteur-activite>
+    <ng-template pTemplate="content">
+      <app-secteur-activite></app-secteur-activite>
+    </ng-template>
   </p-tabPanel>
-  <!-- <p-tabPanel header="Statut du ticket">
-    <app-status-ticket></app-status-ticket>
-  </p-tabPanel> -->
-  <!-- <p-tabPanel header="Statut opportunité">
-    <app-status-opportunite></app-status-opportunite>
-  </p-tabPanel> -->
+
   <p-tabPanel [cache]="false" header="Paramètre">
-    <app-parametre></app-parametre>
+    <ng-template pTemplate="content">
+      <app-parametre></app-parametre>
+    </ng-template>
   </p-tabPanel>
+
   <p-tabPanel [cache]="false" header="Catégorie">
-    <app-categorie></app-categorie>
+    <ng-template pTemplate="content">
+      <app-categorie></app-categorie>
+    </ng-template>
   </p-tabPanel>
-  <!-- <p-tabPanel header="Prérequis">
-    <app-prerequis></app-prerequis>
-  </p-tabPanel> -->
   <p-tabPanel [cache]="false" header="Habilitation">
-    <app-habilitation></app-habilitation>
+    <ng-template pTemplate="content">
+      <app-habilitation></app-habilitation>
+    </ng-template>
   </p-tabPanel>
   <p-tabPanel [cache]="false" header="Type d'affaire">
-    <app-buisness-type></app-buisness-type>
+    <ng-template pTemplate="content">
+      <app-buisness-type></app-buisness-type>
+    </ng-template>
   </p-tabPanel>
 </p-tabView>

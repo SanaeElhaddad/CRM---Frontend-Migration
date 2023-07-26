@@ -24,7 +24,6 @@ import { VenteComponent } from './vente/vente.component';
     AppHeaderComponent,
     AppSidebarComponent,
     AppFooterComponent,
-    VenteComponent,
   ],
   exports: [
     LayoutComponent,

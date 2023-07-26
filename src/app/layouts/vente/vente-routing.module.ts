@@ -1,3 +1,4 @@
+import { DevisParentComponent } from "./devis-parent/devis-parent.component";
 import { VenteComponent } from "./vente.component";
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
@@ -11,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: "devis",
-        component: DevisComponent,
+        component: DevisParentComponent,
       },
     ],
   },
