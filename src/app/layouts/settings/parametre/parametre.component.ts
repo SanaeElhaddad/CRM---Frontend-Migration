@@ -64,7 +64,7 @@ export class ParametreComponent implements OnInit {
           .subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.settingsService.findAll().subscribe(
+        this.settingsService.findAllPagination(this.page, this.size).subscribe(
           (data) => {
             this.settingsList = data;
             this.spinner.hide();
@@ -137,7 +137,11 @@ export class ParametreComponent implements OnInit {
       this.showDialog = true;
     }
   }
-  loadDataLazy(event) {}
+  loadDataLazy(event) {
+    this.size = event.rows;
+    this.page = event.first / this.size;
+    this.loadData();
+  }
   onExportExcel(event) {
     this.subscriptions.add(
       this.settingsService.find(this.searchQuery).subscribe(

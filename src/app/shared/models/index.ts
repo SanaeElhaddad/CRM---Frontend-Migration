@@ -27,3 +27,6 @@ export * from "./column";
 export * from "./filter";
 export * from "./habilitation";
 export * from "./Privilege";
+export * from "./Devis";
+export * from "./accounts";
+export * from "./StatusDevis";

@@ -13,14 +13,14 @@ const routes: Routes = [
           import("./settings/settings.module").then((m) => m.SettingsModule),
       },
       {
+        path: "devis",
+        loadChildren: () =>
+          import("./devis/devis.module").then((m) => m.DevisModule),
+      },
+      {
         path: "relation",
         loadChildren: () =>
           import("./relation/relation.module").then((m) => m.RelationModule),
-      },
-      {
-        path: "vente",
-        loadChildren: () =>
-          import("./vente/vente.module").then((m) => m.VenteModule),
       },
     ],
   },

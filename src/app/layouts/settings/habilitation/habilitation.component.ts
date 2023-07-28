@@ -65,21 +65,23 @@ export class HabilitationComponent implements OnInit {
           .subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.habilitationService.findAll().subscribe(
-          (data) => {
-            this.habilitationList = data;
-            this.spinner.hide();
-            console.log(data);
-          },
-          (error) => {
-            this.spinner.hide();
-            this.messageService.add({
-              severity: "error",
-              summary: "Erreur",
-              detail: "Erreur",
-            });
-          }
-        )
+        this.habilitationService
+          .findAllPagination(this.page, this.size)
+          .subscribe(
+            (data) => {
+              this.habilitationList = data;
+              this.spinner.hide();
+              console.log(data);
+            },
+            (error) => {
+              this.spinner.hide();
+              this.messageService.add({
+                severity: "error",
+                summary: "Erreur",
+                detail: "Erreur",
+              });
+            }
+          )
       );
     } else {
       this.subscriptions.add(
@@ -146,7 +148,11 @@ export class HabilitationComponent implements OnInit {
       this.showDialog = true;
     }
   }
-  loadDataLazy(event) {}
+  loadDataLazy(event) {
+    this.size = event.rows;
+    this.page = event.first / this.size;
+    this.loadData();
+  }
   onExportExcel(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(

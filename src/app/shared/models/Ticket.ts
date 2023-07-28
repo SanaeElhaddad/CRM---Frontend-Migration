@@ -1,0 +1,30 @@
+export class Ticket {
+  // private static final long serialVersionUID = 4034991037161584132L;
+  // private long ticketId;
+  // private String ticketCode;
+  // private Date ticketOpeningDate;
+  // private Date ticketClosingDate;
+  // private TypeProblem ticketTypeProblem;
+  // private Account ticketAccount;
+  // private Contact ticketContact;
+  // private User user;
+  // private String ticketPriority;
+  // private StatusTicket ticketStatusTicket;
+  // private Date ticketCreationDate;
+  // private Date ticketUpdateDate;
+  // private String ticketTypeIncident;
+  // private TypeService ticketTypeService;
+  // private User ticketAffectedToUser;
+  // private Set<Action> ticketActions = new HashSet<Action>(0);
+  // private boolean ticketHasDevis;
+  // private Product ticketProduct;
+  // private String ticketMaintenanceContrat;
+  // private Set<Devis> ticketDevis = new HashSet<Devis>(0);
+  // private SaleOrder ticketSaleOrder;
+  // private ReasonReturn ticketReasonReturn;
+  // private Set<ImageTicket> ticketImages=new HashSet<>(0);
+  // private Commercial commercial;
+  // private String ticketDescription;
+  // private PurshaseOrder purshaseOrder;
+  // private Distributor distributor;
+}

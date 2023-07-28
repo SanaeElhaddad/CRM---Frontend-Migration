@@ -1,37 +1,53 @@
 <p-tabView>
-  <p-tabPanel header="Organisation">
+  <p-tabPanel header="Organisation" headerStyleClass="onglet-p-7">
     <ng-template pTemplate="content">
       <app-organisation></app-organisation>
     </ng-template>
   </p-tabPanel>
-  <p-tabPanel [cache]="false" header="Unite de mesure">
+  <p-tabPanel
+    [cache]="false"
+    header="Unite de mesure"
+    headerStyleClass="onglet-p-7"
+  >
     <ng-template pTemplate="content">
       <app-unite-mesure></app-unite-mesure>
     </ng-template>
   </p-tabPanel>
-  <p-tabPanel [cache]="false" header="Secteur d'activité">
+  <p-tabPanel
+    [cache]="false"
+    header="Secteur d'activité"
+    headerStyleClass="onglet-p-7"
+  >
     <ng-template pTemplate="content">
       <app-secteur-activite></app-secteur-activite>
     </ng-template>
   </p-tabPanel>
 
-  <p-tabPanel [cache]="false" header="Paramètre">
+  <p-tabPanel [cache]="false" header="Paramètre" headerStyleClass="onglet-p-7">
     <ng-template pTemplate="content">
       <app-parametre></app-parametre>
     </ng-template>
   </p-tabPanel>
 
-  <p-tabPanel [cache]="false" header="Catégorie">
+  <p-tabPanel [cache]="false" header="Catégorie" headerStyleClass="onglet-p-7">
     <ng-template pTemplate="content">
       <app-categorie></app-categorie>
     </ng-template>
   </p-tabPanel>
-  <p-tabPanel [cache]="false" header="Habilitation">
+  <p-tabPanel
+    [cache]="false"
+    header="Habilitation"
+    headerStyleClass="onglet-p-7"
+  >
     <ng-template pTemplate="content">
       <app-habilitation></app-habilitation>
     </ng-template>
   </p-tabPanel>
-  <p-tabPanel [cache]="false" header="Type d'affaire">
+  <p-tabPanel
+    [cache]="false"
+    header="Type d'affaire"
+    headerStyleClass="onglet-p-7"
+  >
     <ng-template pTemplate="content">
       <app-buisness-type></app-buisness-type>
     </ng-template>

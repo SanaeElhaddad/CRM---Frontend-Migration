@@ -64,7 +64,7 @@ export class UniteMesureComponent implements OnInit {
         this.uomService.size().subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.uomService.findAll().subscribe(
+        this.uomService .findAllPagination(this.page, this.size).subscribe(
           (data) => {
             this.uomList = data;
             this.spinner.hide();
@@ -137,7 +137,11 @@ export class UniteMesureComponent implements OnInit {
       this.showDialog = true;
     }
   }
-  loadDataLazy(event) {}
+  loadDataLazy(event) {
+    this.size = event.rows;
+    this.page = event.first / this.size;
+    this.loadData();
+  }
   onExportExcel(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(

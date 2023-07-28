@@ -16,7 +16,8 @@ import { TableModule } from "primeng/table";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { BreadcrumbModule } from "primeng/breadcrumb";
 import { ToastModule } from "primeng/toast";
-import { VenteComponent } from './vente/vente.component';
+
+import { DevisComponent } from './devis/devis.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { VenteComponent } from './vente/vente.component';
     AppHeaderComponent,
     AppSidebarComponent,
     AppFooterComponent,
+    
   ],
   exports: [
     LayoutComponent,

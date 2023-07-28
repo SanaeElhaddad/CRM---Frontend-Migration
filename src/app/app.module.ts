@@ -2,7 +2,7 @@ import { NgPipesModule } from "ngx-pipes";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { registerLocaleData } from "@angular/common";
+import { DecimalPipe, registerLocaleData } from "@angular/common";
 import { AppComponent } from ".//app.component";
 import { AppRoutingModule } from ".//app-routing.module";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";

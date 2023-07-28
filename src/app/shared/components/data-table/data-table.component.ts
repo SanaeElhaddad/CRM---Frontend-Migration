@@ -96,7 +96,6 @@ export class DataTableComponent implements OnInit {
   }
 
   set selectedColumns(val: any[]) {
-    
     this._selectedColumns = this.cols.filter((col) => val.includes(col));
   }
 
@@ -133,8 +132,10 @@ export class DataTableComponent implements OnInit {
 
     if (event === "object") {
       res = 1;
-    } else if (event === "number" || event === "string") {
+    } else if (event === "number") {
       res = 2;
+    } else if (event === "string") {
+      res = 6;
     } else if (event === "date") {
       res = 3;
     } else if (event === "boolean") {

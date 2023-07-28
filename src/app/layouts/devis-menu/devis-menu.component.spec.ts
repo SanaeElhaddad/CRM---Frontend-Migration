@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LigneDevisComponent } from './ligne-devis.component';
+import { DevisMenuComponent } from './devis-menu.component';
 
-describe('LigneDevisComponent', () => {
-  let component: LigneDevisComponent;
-  let fixture: ComponentFixture<LigneDevisComponent>;
+describe('DevisMenuComponent', () => {
+  let component: DevisMenuComponent;
+  let fixture: ComponentFixture<DevisMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LigneDevisComponent ]
+      declarations: [ DevisMenuComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LigneDevisComponent);
+    fixture = TestBed.createComponent(DevisMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

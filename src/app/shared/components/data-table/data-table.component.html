@@ -1,86 +1,93 @@
 <div class="card mt-1">
-  <div class="card-header" style="background-color: #f7f7f7;">
-      <div class="row">
-
-        <div class="col-md-4 pull-left ">
-      <span  >
-
-        <!-- <p-button icon="pi pi-plus" 
+  <div class="card-header" style="background-color: #f7f7f7">
+    <div class="row">
+      <div class="col-md-4 pull-left">
+        <span>
+          <!-- <p-button icon="pi pi-plus"
         styleClass="p-button-info mx-1"
-        [hidden]="addBtnVisible" 
+        [hidden]="addBtnVisible"
         (click)="onEdit(1)"
         ></p-button> -->
 
-             <button  
-            [hidden]="addBtnVisible" 
-              type="button"
-              class="btn btn-sm btn-primary mx-1"
-              (click)="onEdit(1)"   >
+          <button
+            [hidden]="addBtnVisible"
+            type="button"
+            class="btn btn-sm btn-primary mx-1"
+            (click)="onEdit(1)"
+          >
             <!--ADD-->
-               <i class="fa fa-plus"></i>
-      </button> 
-            </span>
-            <span  >
-              <!-- <p-button icon="pi pi-pencil" 
+            <i class="fa fa-plus"></i>
+          </button>
+        </span>
+        <span>
+          <!-- <p-button icon="pi pi-pencil"
               styleClass="p-button-success mx-1"
-              [hidden]="updateBtnVisible" 
+              [hidden]="updateBtnVisible"
               (click)="onEdit(2)"
               [disabled]="updateBtnDisable == false"></p-button> -->
-          
-             <button
-             [hidden]="updateBtnVisible"
-             type="button"
-              class="btn btn-sm btn-success mx-1"
-              (click)="onEdit(2)"
-              [disabled]="updateBtnDisable == false" > 
-           <!--UPDATE-->
-               <i class="fa fa-pencil"></i>
-            </button> 
-            </span>
-            <span  >
-              <!-- <p-button icon="pi pi-trash" 
+
+          <button
+            [hidden]="updateBtnVisible"
+            type="button"
+            class="btn btn-sm btn-success mx-1"
+            (click)="onEdit(2)"
+            [disabled]="updateBtnDisable == false"
+          >
+            <!--UPDATE-->
+            <i class="fa fa-pencil"></i>
+          </button>
+        </span>
+        <span>
+          <!-- <p-button icon="pi pi-trash"
               [hidden]="deleteBtnVisible"
               [disabled]="deleteBtnDisable == false"
               styleClass="p-button-danger mx-1"
-              [hidden]="addBtnVisible" 
+              [hidden]="addBtnVisible"
               (click)="onEdit(1)"
               ></p-button> -->
 
-             <button
+          <button
             [hidden]="deleteBtnVisible"
-              type="button"
-              class="btn btn-sm btn-danger mx-1"
-              (click)="onEdit(3)"
-              [disabled]="deleteBtnDisable == false" > 
+            type="button"
+            class="btn btn-sm btn-danger mx-1"
+            (click)="onEdit(3)"
+            [disabled]="deleteBtnDisable == false"
+          >
             <!--DELETE-->
-               <i class="fa fa-trash-o"></i>
-            </button> 
+            <i class="fa fa-trash-o"></i>
+          </button>
         </span>
+      </div>
+
+      <div class="col-md-3">
+        <span style="font-size: 14px; color: #5f5b5b">
+          <b>{{ listName | translate }}</b></span
+        >
+      </div>
+      <div class="d-flex col-md-5 justify-content-end">
+        <div>
+          <p-splitButton
+            label="Exportation"
+            styleClass="p-button-secondary "
+            id="button-icon-only"
+            [model]="items"
+          ></p-splitButton>
         </div>
 
-        <div class=" col-md-3 ">
-          <span style="font-size: 14px; color: #5f5b5b;">
-            <b>{{listName | translate}}</b></span
-          >
-        </div>
-        <div class="d-flex col-md-5 justify-content-end ">
-<div>
-          <p-splitButton label="Exportation" 
-          styleClass="p-button-secondary "
-        id="button-icon-only"
-           [model]="items" ></p-splitButton>
- </div>
- 
-            <button
-              type="button"
-              title="{{ 'Enregistrer la vue' | translate }}"
-              class="btn btn-sm "
-              (click)="onSaveView()"
-            ><i class="sidebar-item-icon"><img src="./assets/img/logos/saveview.png"
-              width="25px" height="25px"
-              ></i>
-          </button>
-       <!--   <button
+        <button
+          type="button"
+          title="{{ 'Enregistrer la vue' | translate }}"
+          class="btn btn-sm"
+          (click)="onSaveView()"
+        >
+          <i class="sidebar-item-icon"
+            ><img
+              src="./assets/img/logos/saveview.png"
+              width="25px"
+              height="25px"
+          /></i>
+        </button>
+        <!--   <button
           type="button"
           title="{{ 'Télécharger en PDF' | translate }}"
           class="btn btn-sm "
@@ -108,7 +115,7 @@
    ></i>
   </button> -->
 
-             <!-- <p-splitButton
+        <!-- <p-splitButton
               label="{{'Export' | translate}}"
               icon="pi pi-file"
               class="mr-3"
@@ -116,118 +123,124 @@
               styleClass="ui-button-warning"
             ></p-splitButton> -->
 
-   <p-multiSelect
-            class="mx-1"
-              [options]="cols"
-              [(ngModel)]="selectedColumns"
-              optionLabel="header"
-              selectedItemsLabel="{{'colonnes sélectionnées'| translate }}"
-              dropdownIcon="pi pi-table"
-              [style]="{ minWidth: '190px' }"
-              defaultLabel="{{ 'Choisir' | translate }}"
-              maxSelectedLabels="0"
-            ></p-multiSelect>
-
-
-        </div>
+        <p-multiSelect
+          class="mx-1"
+          [options]="cols"
+          [(ngModel)]="selectedColumns"
+          optionLabel="header"
+          selectedItemsLabel="{{ 'colonnes sélectionnées' | translate }}"
+          dropdownIcon="pi pi-table"
+          [style]="{ minWidth: '190px' }"
+          defaultLabel="{{ 'Choisir' | translate }}"
+          maxSelectedLabels="0"
+        ></p-multiSelect>
       </div>
-
     </div>
-
-
   </div>
+</div>
 
-    <div >
-    <p-table
-      [value]="objectList"
-      [responsive]="true"
-      [rows]="size"
-      [paginator]="true"
-      [rowsPerPageOptions]="[5,10, 20, 50, 100, 1000]"
-      [totalRecords]="collectionSize"
-      [columns]="selectedColumns"
-      [lazy]="true"
-      (onLazyLoad)="loadDataLazy($event)"
-      [resizableColumns]="true"
-      [reorderableColumns]="true"
-      [(selection)]="selectedObjects"
-      selectionMode="multiple"
-      [reorderableColumns]="true"
-      (onRowSelect)="onRowSelect($event)"
-      (onRowUnselect)="onRowUnselect($event)"
-      sortMode="multiple"
-      [scrollable]="true"
-
+<div>
+  <p-table
+    [value]="objectList"
+    [responsive]="true"
+    [rows]="size"
+    [paginator]="true"
+    [rowsPerPageOptions]="[5, 10, 20, 50, 100, 1000]"
+    [totalRecords]="collectionSize"
+    [columns]="selectedColumns"
+    [lazy]="true"
+    (onLazyLoad)="loadDataLazy($event)"
+    [resizableColumns]="true"
+    [reorderableColumns]="true"
+    [(selection)]="selectedObjects"
+    selectionMode="multiple"
+    [reorderableColumns]="true"
+    (onRowSelect)="onRowSelect($event)"
+    (onRowUnselect)="onRowUnselect($event)"
+    sortMode="multiple"
+    [scrollable]="true"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width: 40px">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th
+          *ngFor="let col of columns"
+          pReorderableColumn
+          style="width: 160px; font-size: 13px"
+        >
+          {{ col.header | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template
+      pTemplate="body"
+      let-rowData
+      let-columns="columns"
+      let-rowIndex="rowIndex"
     >
+      <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+        <td style="width: 40px">
+          <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+        </td>
 
-
-
-      <ng-template pTemplate="header" let-columns >
-        <tr>
-          <th style="width:40px">
-            <p-tableHeaderCheckbox ></p-tableHeaderCheckbox>
-          </th>
-          <th *ngFor="let col of columns" pReorderableColumn style="width:160px;font-size:13px">
-            {{ col.header | translate}}
-          </th>
-        </tr>
-      </ng-template>
-      <ng-template
-        pTemplate="body"
-        let-rowData
-        let-columns="columns"
-        let-rowIndex="rowIndex"
-      >
-        <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
-          <td style="width:40px">
-            <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
-          </td>
-
-          <td *ngFor="let col of columns; let i = index" style="width:160px">
-
-
-
-
-             <span *ngIf="(typeOf(col.type)===1 );">
-
-              {{rowData[col?.field] ? rowData[col?.field][col?.child] :''}}
-               <!-- <span *ngIf="(rowData[col.field]!= null) else vide" >
+        <td *ngFor="let col of columns; let i = index" style="width: 160px">
+          <span *ngIf="typeOf(col.type) === 1">
+            {{ rowData[col?.field] ? rowData[col?.field][col?.child] : "" }}
+            <!-- <span *ngIf="(rowData[col.field]!= null) else vide" >
              {{ rowData[col?.field][col?.child]}}
              {{''}}
             </span>
                <ng-template #vide>
                 {{rowData[col?.field][col?.child]}}
               </ng-template> -->
+          </span>
+          <span *ngIf="typeOf(col.type) === 2">
+            {{
+              rowData[col?.field]
+                ? rowData[col?.field]
+                : "0"
+            }}
+          </span>
 
-            </span>
-            <span  *ngIf="(typeOf(col.type)===2 );">
-            {{rowData[col?.field] ? rowData[col?.field]  :'' }}
-            </span>
+          <span *ngIf="typeOf(col.type) === 6">
+            {{
+              rowData[col?.field]
+                ? rowData[col?.field]
+                : ""
+            }}
+          </span>
 
-            <span  *ngIf="(typeOf(col.type)===3 );">
-              {{rowData[col?.field]  | date: 'dd-MM-yyyy'}}
-              </span>
-              <span  *ngIf="(typeOf(col.type)===4 );">
-              <p-checkbox [(ngModel)]="rowData[col.field]" binary="true" [disabled]="true"></p-checkbox>
+          <span *ngIf="typeOf(col.type) === 3">
+            {{ rowData[col?.field] | date : "dd-MM-yyyy" }}
+          </span>
+          <span *ngIf="typeOf(col.type) === 4">
+            <p-checkbox
+              [(ngModel)]="rowData[col.field]"
+              binary="true"
+              [disabled]="true"
+            ></p-checkbox>
+          </span>
 
-            </span>
+          <span *ngIf="typeOf(col.type) === 5">
+            {{
+              rowData[col?.field]
+                ? rowData[col?.field][col?.child][col?.child2]
+                : ""
+            }}
+          </span>
+        </td>
 
-            <span  *ngIf="(typeOf(col.type)===5 );">
-              {{rowData[col?.field] ? rowData[col?.field][col?.child][col?.child2] :''}}
+        <!-- <p-checkbox binary="true"></p-checkbox> -->
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
 
-            </span>
-          </td>
-
-
-          <!-- <p-checkbox binary="true"></p-checkbox> -->
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
-
-  <ngx-spinner
-    bdColor="rgba(255,255,255,0)"
-    size="large"
-    color="#00d2ff"
-    type="ball-spin-fade-rotating"
-  ></ngx-spinner>
+<ngx-spinner
+  bdColor="rgba(255,255,255,0)"
+  size="large"
+  color="#00d2ff"
+  type="ball-spin-fade-rotating"
+></ngx-spinner>

@@ -65,7 +65,8 @@ export class BuisnessTypeComponent implements OnInit {
           .subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.businessTypeService.findAll().subscribe(
+
+        this.businessTypeService.findAllPagination(this.page, this.size).subscribe(
           (data) => {
             this.businessTypeList = data;
             this.spinner.hide();
@@ -143,7 +144,11 @@ export class BuisnessTypeComponent implements OnInit {
       this.showDialog = true;
     }
   }
-  loadDataLazy(event) {}
+  loadDataLazy(event) {
+    this.size = event.rows;
+    this.page = event.first / this.size;
+    this.loadData();
+  }
   onExportExcel(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(

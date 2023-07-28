@@ -65,21 +65,23 @@ export class CategorieComponent implements OnInit {
           .subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.clientCategoryService.findAll().subscribe(
-          (data) => {
-            this.clientCategoryList = data;
-            this.spinner.hide();
-            console.log(data);
-          },
-          (error) => {
-            this.spinner.hide();
-            this.messageService.add({
-              severity: "error",
-              summary: "Erreur",
-              detail: "Erreur",
-            });
-          }
-        )
+        this.clientCategoryService
+          .findAllPagination(this.page, this.size)
+          .subscribe(
+            (data) => {
+              this.clientCategoryList = data;
+              this.spinner.hide();
+              console.log(data);
+            },
+            (error) => {
+              this.spinner.hide();
+              this.messageService.add({
+                severity: "error",
+                summary: "Erreur",
+                detail: "Erreur",
+              });
+            }
+          )
       );
     } else {
       this.subscriptions.add(
@@ -143,7 +145,11 @@ export class CategorieComponent implements OnInit {
       this.showDialog = true;
     }
   }
-  loadDataLazy(event) {}
+  loadDataLazy(event) {
+    this.size = event.rows;
+    this.page = event.first / this.size;
+    this.loadData();
+  }
   onExportExcel(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(

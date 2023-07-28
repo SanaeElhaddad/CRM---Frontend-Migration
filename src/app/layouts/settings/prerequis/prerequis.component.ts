@@ -64,7 +64,7 @@ export class PrerequisComponent implements OnInit {
           .subscribe((data) => (this.collectionSize = data))
       );
       this.subscriptions.add(
-        this.prerequisteTypeService.findAll().subscribe(
+        this.prerequisteTypeService .findAllPagination(this.page, this.size).subscribe(
           (data) => {
             this.prerequisiteTypeList = data;
             this.spinner.hide();
@@ -142,7 +142,11 @@ export class PrerequisComponent implements OnInit {
       this.showDialog = true;
     }
   }
-  loadDataLazy(event) {}
+  loadDataLazy(event) {
+    this.size = event.rows;
+    this.page = event.first / this.size;
+    this.loadData();
+  }
   onExportExcel(event) {
     if (this.searchQuery !== "") {
       this.subscriptions.add(

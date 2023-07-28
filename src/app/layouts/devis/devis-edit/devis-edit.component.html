@@ -1,0 +1,156 @@
+<p-breadcrumb [model]="itemsBreadcrumb" [home]="homeBreadcrumb"></p-breadcrumb>
+<a routerLink="/core/devis" style="text-decoration: underline"
+  >Retour au liste</a
+>
+
+<p-panel header="Editer Devis" styleClass="mt-3">
+  <div [formGroup]="formEditForm" *ngIf="formEditForm">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="devisCode">Code *</label>
+        <input
+          id="devisCode"
+          formControlName="devisCode"
+          type="text"
+          pInputText
+          disabled
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="codeClient">Code client *</label>
+        <p-autoComplete
+          formControlName="clientCodeDevis"
+          [suggestions]="codeClientList"
+          (completeMethod)="onCodeClientSearch($event)"
+          field="accountCode"
+        ></p-autoComplete>
+      </div>
+      <div class="p-field p-col">
+        <label for="nomClient">Nom client *</label>
+        <p-autoComplete
+          formControlName="clientNameDevis"
+          [suggestions]="nameClientList"
+          (completeMethod)="onNameClientSearch($event)"
+          field="accountName"
+        ></p-autoComplete>
+      </div>
+      <div class="p-field p-col">
+        <label for="statusDevis">Statut de devis</label>
+        <p-dropdown
+          [options]="statusDevis"
+          formControlName="statusDevis"
+          optionLabel="statusDevisCode"
+          [disabled]="true"
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="devisVersion">Version *</label>
+        <br />
+        <input
+          id="devisVersion"
+          formControlName="devisVersion"
+          type="text"
+          pInputText
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="opportunity">Opportunité</label>
+        <p-autoComplete
+          formControlName="opportunityDevis"
+          [suggestions]="opportunityDevisList"
+          (completeMethod)="onOppurtunitySearch($event)"
+          field="leadCode"
+        ></p-autoComplete>
+      </div>
+      <div class="p-field p-col">
+        <label for="commercial">Commercial *</label>
+        <p-autoComplete
+          formControlName="commercialDevis"
+          [suggestions]="opportunityDevisList"
+          (completeMethod)="onCommercialSearch($event)"
+          field="code"
+        ></p-autoComplete>
+      </div>
+      <div class="p-field p-col">
+        <label for="partenaire">Partenaire</label>
+        <p-autoComplete
+          formControlName="partenaireDevis"
+          [suggestions]="partenaireDevisList"
+          (completeMethod)="onPartenaireSearch($event)"
+          field="code"
+        ></p-autoComplete>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="prixHTDevis">Prix HT</label>
+        <input
+          id="prixHTDevis"
+          formControlName="prixHTDevis"
+          type="text"
+          pInputText
+          disabled="{{ switchDisabledInput }}"
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="tvaDevis">TVA</label>
+        <input
+          id="tvaDevis"
+          formControlName="TvaDevis"
+          type="text"
+          disabled="{{ switchDisabledInput }}"
+          pInputText
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="remiseDevis">Remise</label>
+        <input
+          id="remiseDevis"
+          formControlName="remiseDevis"
+          type="text"
+          pInputText
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="PrixTTCDevis">Prix TTC</label>
+        <input
+          id="PrixTTCDevis"
+          formControlName="PrixTTCDevis"
+          type="text"
+          pInputText
+          disabled="{{ switchDisabledInput }}"
+        />
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="firstLineAddress">Première ligne d'adresse*</label>
+        <input
+          id="firstLineAddress"
+          formControlName="firstLineAddress"
+          type="text"
+          pInputText
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="secondLineAddress">Deuxième ligne d'adresse</label>
+        <input
+          id="secondLineAddress"
+          formControlName="secondLineAddress"
+          type="text"
+          pInputText
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="nomClient">Code Zip</label>
+        <input id="codeZip" formControlName="codeZip" type="text" pInputText />
+      </div>
+      <div class="p-field p-col">
+        <label for="ville">Ville</label>
+        <input id="ville" formControlName="ville" type="text" pInputText />
+      </div>
+    </div>
+  </div>
+</p-panel>

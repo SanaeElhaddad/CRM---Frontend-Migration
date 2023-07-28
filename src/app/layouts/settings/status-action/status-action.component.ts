@@ -66,7 +66,7 @@ export class StatusActionComponent implements OnInit, OnDestroy {
     );
 
     this.subscriptions.add(
-      this.actionStatusService.findAll().subscribe(
+      this.actionStatusService .findAllPagination(this.page, this.size).subscribe(
         (data) => {
           this.statusActionList = data;
           this.spinner.hide();
