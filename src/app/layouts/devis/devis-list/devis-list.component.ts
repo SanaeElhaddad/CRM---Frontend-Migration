@@ -131,6 +131,8 @@ export class DevisListComponent implements OnInit, OnDestroy {
           .subscribe(
             (data) => {
               this.devisList = data;
+              console.log(data);
+
               this.spinner.hide();
             },
             (error) => {

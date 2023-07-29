@@ -1,4 +1,4 @@
-import { InputTextModule } from 'primeng/inputtext';
+import { InputTextModule } from "primeng/inputtext";
 import { FieldsetModule } from "primeng/fieldset";
 import { SharedModule } from "./../../shared/shared.module";
 import { CheckboxModule } from "primeng/checkbox";
@@ -17,6 +17,7 @@ import { DevisLineListComponent } from "./devis-line-list/devis-line-list.compon
 import { DevisMenuComponent } from "../devis-menu/devis-menu.component";
 import { BreadcrumbModule } from "primeng/breadcrumb";
 import { DropdownModule } from "primeng/dropdown";
+import { InputTextareaModule } from "primeng/inputtextarea";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DropdownModule } from "primeng/dropdown";
   imports: [
     CommonModule,
     DevisRoutingModule,
+    InputTextareaModule,
     TabViewModule,
     PanelModule,
     BreadcrumbModule,
@@ -39,7 +41,7 @@ import { DropdownModule } from "primeng/dropdown";
     CheckboxModule,
     SharedModule,
     FieldsetModule,
-    InputTextModule
+    InputTextModule,
   ],
 })
 export class DevisModule {}

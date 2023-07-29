@@ -22,6 +22,7 @@
           formControlName="clientCodeDevis"
           [suggestions]="codeClientList"
           (completeMethod)="onCodeClientSearch($event)"
+          (onSelect)="fillUsingCodeClient($event)"
           field="accountCode"
         ></p-autoComplete>
       </div>
@@ -41,6 +42,7 @@
           formControlName="statusDevis"
           optionLabel="statusDevisCode"
           [disabled]="true"
+          
         ></p-dropdown>
       </div>
     </div>
@@ -71,6 +73,7 @@
           [suggestions]="opportunityDevisList"
           (completeMethod)="onCommercialSearch($event)"
           field="code"
+          [disabled]="editCommercialDisabled"
         ></p-autoComplete>
       </div>
       <div class="p-field p-col">
@@ -151,6 +154,33 @@
         <label for="ville">Ville</label>
         <input id="ville" formControlName="ville" type="text" pInputText />
       </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="pays">Pays</label>
+        <input id="pays" formControlName="pays" type="text" pInputText />
+      </div>
+      <div class="p-field p-col">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="2"
+          cols="30"
+          pInputTextarea
+        ></textarea>
+      </div>
+      <div class="p-field p-col">
+        <label for="remarques">Remarques</label>
+        <textarea
+          id="remarques"
+          formControlName="remarques"
+          rows="2"
+          cols="30"
+          pInputTextarea
+        ></textarea>
+      </div>
+      <div class="p-field p-col"></div>
     </div>
   </div>
 </p-panel>
