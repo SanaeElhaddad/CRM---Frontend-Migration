@@ -30,3 +30,6 @@ export * from "./Privilege";
 export * from "./Devis";
 export * from "./accounts";
 export * from "./StatusDevis";
+export * from "./Lead";
+export * from "./Commercial";
+export * from "./Distributor";

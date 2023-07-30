@@ -42,7 +42,6 @@
           formControlName="statusDevis"
           optionLabel="statusDevisCode"
           [disabled]="true"
-          
         ></p-dropdown>
       </div>
     </div>
@@ -63,6 +62,7 @@
           formControlName="opportunityDevis"
           [suggestions]="opportunityDevisList"
           (completeMethod)="onOppurtunitySearch($event)"
+          (onSelect)="fillClientUsingOppurtunity($event)"
           field="leadCode"
         ></p-autoComplete>
       </div>
@@ -70,7 +70,7 @@
         <label for="commercial">Commercial *</label>
         <p-autoComplete
           formControlName="commercialDevis"
-          [suggestions]="opportunityDevisList"
+          [suggestions]="commercialDevisList"
           (completeMethod)="onCommercialSearch($event)"
           field="code"
           [disabled]="editCommercialDisabled"

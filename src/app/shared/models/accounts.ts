@@ -1,3 +1,4 @@
+import { Lead } from './Lead';
 import { ActivityArea } from "./ActivityArea";
 import { Address } from "./Address";
 import { ClientCategory } from "./ClientCategory";
@@ -26,7 +27,7 @@ export class Account {
   accountCredit: number;
   accountComment: string;
   accountStatusAccount: StatusAccount;
-  //accountLeads: Lead[];
+  accountLeads: Lead[];
   user: User;
   //accountSaleOrders: SaleOrder[];
   //accountBankData: BankData;

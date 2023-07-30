@@ -1,11 +1,19 @@
+import { PartenaireService } from "./../../../shared/services/api/partenaire.service";
+import {
+  Commercial,
+  Account,
+  Devis,
+  Lead,
+  Distributor,
+} from "./../../../shared/models/";
+import { CommercialService } from "./../../../shared/services/api/commercial.service";
+import { OppurtunityService } from "./../../../shared/services/api/oppurtunity.service";
 import { DevisStatusService } from "./../../../shared/services/api/devis-status.service";
 import { AccountService } from "./../../../shared/services/api/accounts.service";
 import { StatusDevis } from "./../../../shared/models/StatusDevis";
-import { Account } from "./../../../shared/models/accounts";
 import { Subscription } from "rxjs";
 import { DevisService } from "./../../../shared/services/api/devis.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Devis } from "./../../../shared/models/";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { MenuItem, MessageService } from "primeng/api";
 import { Component, OnDestroy, OnInit } from "@angular/core";
@@ -25,6 +33,9 @@ export class DevisEditComponent implements OnInit, OnDestroy {
   statusDevis = new Array<StatusDevis>();
   codeClientList = new Array<Account>();
   editCommercialDisabled: boolean = false;
+  opportunityDevisList = new Array<Lead>();
+  commercialDevisList = new Array<Commercial>();
+  partenaireDevisList = new Array<Distributor>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,7 +43,10 @@ export class DevisEditComponent implements OnInit, OnDestroy {
     private devisService: DevisService,
     private accountService: AccountService,
     private messageService: MessageService,
-    private devisStatusService: DevisStatusService
+    private devisStatusService: DevisStatusService,
+    private oppurtunityService: OppurtunityService,
+    private commercialService: CommercialService,
+    private partenaireService: PartenaireService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +72,13 @@ export class DevisEditComponent implements OnInit, OnDestroy {
       );
     } else {
       this.selectedDevis = new Devis();
+      //initialise version with 1 and others input with 0
+      this.selectedDevis.version = 1;
+      this.selectedDevis.totalPriceHT =
+        this.selectedDevis.totalPriceTTC =
+        this.selectedDevis.discount =
+        this.selectedDevis.vat =
+          0;
       //initialise p-dropdown with the object containing 'ATTENTE' as statusDevisCode
       this.subscriptions.add(
         this.devisStatusService
@@ -121,14 +142,78 @@ export class DevisEditComponent implements OnInit, OnDestroy {
     );
   }
 
-  onCommercialSearch(event) {}
+  onCommercialSearch(event) {
+    this.subscriptions.add(
+      this.commercialService.find("code~" + event.query).subscribe(
+        (data) => {
+          this.commercialDevisList = data;
+        },
+        (error) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Erreur",
+            detail: "Erreur",
+          });
+        }
+      )
+    );
+  }
 
-  onOppurtunitySearch(event) {}
+  onPartenaireSearch(event) {
+    this.subscriptions.add(
+      this.partenaireService.find("code~" + event.query).subscribe(
+        (data) => {
+          this.partenaireDevisList = data;
+        },
+        (error) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Erreur",
+            detail: "Erreur",
+          });
+        }
+      )
+    );
+  }
+
+  onOppurtunitySearch(event) {
+    //Get the selected Account from the input
+    let accountSelected: Account = this.formEditForm.value["clientCodeDevis"];
+
+    if (accountSelected !== null) {
+      //Get the opportunities of the selected Account Code
+      this.subscriptions.add(
+        this.oppurtunityService
+          .find("leadAccount.accountCode~" + accountSelected.accountCode)
+          .subscribe(
+            (data) => (this.opportunityDevisList = data),
+            (error) => {
+              this.messageService.add({
+                severity: "error",
+                summary: "Erreur",
+                detail: "Erreur",
+              });
+            }
+          )
+      );
+    } else {
+      //get All the oppurtunities if there no code selected
+      this.subscriptions.add(
+        this.oppurtunityService.find("leadCode~" + event.query).subscribe(
+          (data) => (this.opportunityDevisList = data),
+          (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Erreur",
+              detail: "Erreur",
+            });
+          }
+        )
+      );
+    }
+  }
 
   fillUsingCodeClient(event: Account) {
-    console.log(event.accountName);
-    console.log(event.accountAddress);
-
     this.formEditForm.patchValue({
       clientNameDevis: event,
       ville: event.accountAddress.adrCity,
@@ -136,6 +221,12 @@ export class DevisEditComponent implements OnInit, OnDestroy {
       codeZip: event.accountAddress.adrZip,
       firstLineAddress: event.accountAddress.adrLine1,
       secondLineAddress: event.accountAddress.adrLine2,
+    });
+  }
+
+  fillClientUsingOppurtunity(event: Lead) {
+    this.formEditForm.patchValue({
+      clientCodeDevis: event.leadAccount,
     });
   }
 
