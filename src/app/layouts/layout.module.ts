@@ -1,5 +1,4 @@
-import { NotificationService } from "./../shared/services/api/notification.service";
-
+import { NotificationService } from './../shared/services/api/notification.service';
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { SharedModule } from "./../shared/shared.module";
@@ -19,13 +18,15 @@ import { BreadcrumbModule } from "primeng/breadcrumb";
 import { ToastModule } from "primeng/toast";
 import { ProductComponent } from './product/product.component';
 
+import { DevisComponent } from './devis/devis.component';
+
 @NgModule({
   declarations: [
     LayoutComponent,
     AppHeaderComponent,
     AppSidebarComponent,
     AppFooterComponent,
-
+    
   ],
   exports: [
     LayoutComponent,

@@ -1,12 +1,12 @@
-import { AuthenticationService } from './../../services/api/authentication.service';
+import { AuthenticationService } from "./../../services/api/authentication.service";
 import { Observable } from "rxjs";
 import { EmittedOBject } from "./emitted-object";
-import { UserService } from '../../services/api/user.service';
+import { UserService } from "../../services/api/user.service";
 import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
-import { User } from '../../models';
+import { User } from "../../models";
 import { MenuItem, ConfirmationService, SortEvent } from "primeng/api";
-import { Columns } from '../../models';
+import { Columns } from "../../models";
 import {
   Component,
   OnInit,
@@ -15,21 +15,21 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
 } from "@angular/core";
 
 @Component({
   selector: "app-data-table",
   templateUrl: "./data-table.component.html",
-  styleUrls: ["./data-table.component.css"]
+  styleUrls: ["./data-table.component.css"],
 })
 export class DataTableComponent implements OnInit {
-  @Input() permissionCreate :string[]=[];
-  @Input() permissionEdit :string[]=[];
-  @Input() permissionDelete :string[]=[];
+  @Input() permissionCreate: string[] = [];
+  @Input() permissionEdit: string[] = [];
+  @Input() permissionDelete: string[] = [];
 
   @Input() page = 0;
-  @Input() size=0;
+  @Input() size = 0;
   @Input() collectionSize: number;
   @Input() objectList: Array<any> = [];
   @Input() objectExportList: Array<any> = [];
@@ -64,24 +64,31 @@ export class DataTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
     this.loadColumns();
 
     this.items = [
-
-      {label: 'En PDF', icon: 'pi pi-file-pdf', command: () => {
+      {
+        label: "En PDF",
+        icon: "pi pi-file-pdf",
+        command: () => {
           this.exportPdf();
-        }},
-      {label: 'En EXCEL Vue', icon: 'pi pi-file-excel', command: () => {
+        },
+      },
+      {
+        label: "En EXCEL Vue",
+        icon: "pi pi-file-excel",
+        command: () => {
           this.exportExcelVue();
-        }},
-      {label: 'En EXCEL Globale', icon: 'pi pi-file-excel', command: () => {
+        },
+      },
+      {
+        label: "En EXCEL Globale",
+        icon: "pi pi-file-excel",
+        command: () => {
           this.exportExcelGlobal();
-        }},
-
+        },
+      },
     ];
-
-
   }
 
   @Input() get selectedColumns(): any[] {
@@ -89,17 +96,16 @@ export class DataTableComponent implements OnInit {
   }
 
   set selectedColumns(val: any[]) {
-    this._selectedColumns = this.cols.filter(col => val.includes(col));
+    this._selectedColumns = this.cols.filter((col) => val.includes(col));
   }
 
   loadColumns() {
     this.user = this.authUser.getCurrentUser();
 
-
     if (this.user.columns != null && this.user.columns !== "") {
       this.columnsAdded = JSON.parse(this.user.columns);
       this.columnsMapped = this.columnsAdded.filter(
-        tab => tab.classe === this.className
+        (tab) => tab.classe === this.className
       );
 
       if (this.columnsMapped.length >= 1) {
@@ -116,26 +122,25 @@ export class DataTableComponent implements OnInit {
     } else {
       this.selectedColumns = this.cols;
     }
-    this.exportColumns = this.selectedColumns.map(col => ({
+    this.exportColumns = this.selectedColumns.map((col) => ({
       title: col.header,
-      dataKey: col.field
+      dataKey: col.field,
     }));
-
-
   }
   typeOf(event) {
     let res: number;
 
     if (event === "object") {
       res = 1;
-    } else if (event === "number" || event === "string") {
+    } else if (event === "number") {
       res = 2;
+    } else if (event === "string") {
+      res = 6;
     } else if (event === "date") {
       res = 3;
     } else if (event === "boolean") {
       res = 4;
-    }
-    else if (event === "object2") {
+    } else if (event === "object2") {
       res = 5;
     }
 
@@ -157,7 +162,7 @@ export class DataTableComponent implements OnInit {
   onEdit(event) {
     this.objectEdited.emit({
       object: this.selectedObjects,
-      operationMode: event
+      operationMode: event,
     });
     this.selectedObjects = [];
   }
@@ -175,7 +180,6 @@ export class DataTableComponent implements OnInit {
     } else {
       this.updateBtnDisable = false;
     }
-
   }
   onRowUnselect(event) {
     if (this.selectedObjects.length === 1) {
@@ -187,13 +191,11 @@ export class DataTableComponent implements OnInit {
   }
 
   onSaveView() {
-
     this.spinner.show();
 
     this.columnsAdded = this.columnsAdded.filter(
-      col => col.classe !== this.className
+      (col) => col.classe !== this.className
     );
-
 
     for (let i = 0; i < this.selectedColumns.length; i++) {
       let c = new Columns();
@@ -206,15 +208,14 @@ export class DataTableComponent implements OnInit {
       this.columnsAdded.push(c);
     }
 
-
     this.user = this.authUser.getCurrentUser();
     this.user.columns = JSON.stringify(this.columnsAdded);
     this.authUser.setuser(this.user);
     this.userservice.set(this.user).subscribe(
-      data => {
+      (data) => {
         this.toastr.success("La vue a été enregistrée avec Succés", "Edition");
       },
-      error => {
+      (error) => {
         this.toastr.error(error.error.message, "Erreur");
         this.spinner.hide();
       },

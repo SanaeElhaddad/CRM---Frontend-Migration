@@ -1,0 +1,76 @@
+
+<p-panel header="{{ 'Devis' | translate }}" [toggleable]="true">
+  <div class="p-fluid p-formgrid p-grid" [formGroup]="DevisSearchForm">
+    <div class="p-field p-col">
+      <label class="font-weight-bold">{{ "Code" | translate }}</label
+      ><br />
+      <p-autoComplete
+        formControlName="codeDevis"
+        [suggestions]="codeDevisList"
+        (completeMethod)="onCodeDeviSearch($event)"
+        field="code"
+      ></p-autoComplete>
+    </div>
+
+    <div class="p-field p-col">
+      <label class="font-weight-bold">{{
+        "Status de devis" | translate
+      }}</label>
+      <p-dropdown
+        [options]="codestatusDevis"
+        formControlName="statusDevis"
+        optionLabel="statusDevisCode"
+        [autoDisplayFirst]="false"
+      ></p-dropdown>
+    </div>
+
+    <div class="p-field p-col">
+      <label class="font-weight-bold">{{ "Client" | translate }}</label
+      ><br />
+      <p-autoComplete
+        formControlName="clientDevis"
+        [suggestions]="codeClientList"
+        (completeMethod)="onCodeClientSearch($event)"
+        field="accountCode"
+      ></p-autoComplete>
+    </div>
+    <div style="margin-left: 10px"></div>
+    <div class="p-field p-col">
+      <label for="actif">{{ "Actif" | translate }}</label>
+      <br />
+      <p-checkbox
+        formControlName="actif"
+        binary="true"
+        inputId="actif"
+      ></p-checkbox>
+    </div>
+    <br />
+  </div>
+  <div class="text-center mt-3">
+    <button type="button" (click)="reset()" class="btn btn-primary mr-2">
+      <i class="fa fa-refresh mr-2"></i> {{ "Réinitialiser" | translate }}
+    </button>
+
+    <button type="button" (click)="onSearchClicked()" class="btn btn-success">
+      <i class="fa fa-search mr-2"></i> {{ "Rechercher" | translate }}
+    </button>
+  </div>
+</p-panel>
+<app-data-table
+  [className]="className"
+  [cols]="cols"
+  [objectList]="devisList"
+  [collectionSize]="collectionSize"
+  [size]="size"
+  (objectEdited)="onObjectEdited($event)"
+  (lazyLoadData)="loadDataLazy($event)"
+  [listName]="titleList"
+  [viewBtnVisible]="'false'"
+  [addBtnVisible]="showDialog"
+  (exportBtnExcelGlobal)="onExportExcel($event)"
+  (exportBtnPdf)="onExportPdf($event)"
+  (exportBtnExcelVue)="onExportExcel($event)"
+  [permissionCreate]="['PRODUCT_CREATE']"
+  [permissionDelete]="['PRODUCT_DELETE']"
+  [permissionEdit]="['PRODUCT_EDIT']"
+></app-data-table>

@@ -1,0 +1,49 @@
+<p-dialog
+  header="{{ title | translate }}"
+  [(visible)]="displayDialog"
+  [focusOnShow]="false"
+  [responsive]="true"
+  showEffect="fade"
+  [modal]="true"
+  [style]="{ width: '300px' }"
+  (onHide)="onShowDialog()"
+>
+  <div class="mt-3">
+    <form [formGroup]="HabilitationForm">
+      <div class="p-field">
+        <label class="font-weight-bold">{{ "Code*" | translate }}</label
+        ><br />
+        <input formControlName="habilitationCode" field="prvCode" pInputText />
+      </div>
+      <div class="p-field">
+        <label class="font-weight-bold">{{ "Description" | translate }}</label
+        ><br />
+        <textarea
+          id="comment"
+          rows="5"
+          pInputTextarea
+          autoResize="autoResize"
+          formControlName="habilitationDesc"
+          class="w-100"
+        ></textarea>
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        <button
+          (click)="onShowDialog()"
+          type="button"
+          class="btn btn-primary mr-2"
+        >
+          Annuler
+        </button>
+        <button
+          type="button"
+          [disabled]="HabilitationForm.invalid"
+          (click)="onSubmitForm()"
+          class="btn btn-success"
+        >
+          Valider
+        </button>
+      </div>
+    </form>
+  </div>
+</p-dialog>

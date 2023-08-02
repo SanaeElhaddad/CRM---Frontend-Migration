@@ -8,7 +8,7 @@ export class PermissionsService {
 
   private _permissions: string[] = [];
   constructor() {
-    
+  
    }
 
   loadPermissions(permissions: string[]): void{
@@ -24,9 +24,9 @@ export class PermissionsService {
   }
 
   hasPermissions(permissions: string[]) {
-  
-   // console.log(permissions);
-    
+
+    // console.log(permissions);
+
     // TODO: To be refactored
     let permissionExist = false;
     permissions.forEach(p => {
@@ -44,6 +44,6 @@ export class PermissionsService {
   removePermission(permissionName: string): void {
    this._permissions = this._permissions.filter(p => p !== permissionName)
   }
-  
+
 
 }

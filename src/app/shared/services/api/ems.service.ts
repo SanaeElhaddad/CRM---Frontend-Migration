@@ -1,23 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-import { ProxyService } from './proxy.service';
-
+import { ProxyService } from "./proxy.service";
 
 @Injectable()
 export class EmsService<T> {
   controller: string;
 
-
-  constructor(
-    private proxy: ProxyService, controller: string) {
+  constructor(private proxy: ProxyService, controller: string) {
     this.controller = controller;
-
   }
 
   findAll(): Observable<T[]> {
-   // console.log('from driver service findAll');
+    // console.log('from driver service findAll');
     return this.proxy.findAll(this.controller);
   }
 
@@ -43,8 +39,6 @@ export class EmsService<T> {
   }
 
   sizeSearch(search: string) {
-
-    
     return this.proxy.sizeSearch(this.controller, search);
   }
 
@@ -79,10 +73,9 @@ export class EmsService<T> {
 
   generateCode(): Observable<string> {
     return this.proxy.generateCode(this.controller);
-}
+  }
 
-verify() {
-  return this.proxy.verify(this.controller);
-}
-
+  verify() {
+    return this.proxy.verify(this.controller);
+  }
 }

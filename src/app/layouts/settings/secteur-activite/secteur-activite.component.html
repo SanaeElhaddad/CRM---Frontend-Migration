@@ -1,1 +1,69 @@
-<p>secteur-activite works!</p>
+<p-panel
+  header="{{ 'Filtre unité de mesure' | translate }}"
+  [toggleable]="true"
+>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col">
+      <label class="font-weight-bold">{{ "Code" | translate }}</label
+      ><br />
+      <p-autoComplete
+        [(ngModel)]="codeSearch"
+        [suggestions]="codeList"
+        (completeMethod)="onCodeSearch($event)"
+        field="activityAreaCode"
+      ></p-autoComplete>
+    </div>
+
+    <div class="p-field p-col">
+      <label class="font-weight-bold">{{ "Description" | translate }}</label
+      ><br />
+      <input [(ngModel)]="uomDescSearch" field="code" pInputText />
+    </div>
+  </div>
+  <br />
+
+  <div class="text-center">
+    <button type="button" class="btn btn-primary mr-2" (click)="reset()">
+      <i class="fa fa-refresh mr-2"></i> {{ "Réinitialiser" | translate }}
+    </button>
+
+    <button type="button" class="btn btn-success" (click)="onSearchClicked()">
+      <i class="fa fa-search mr-2"></i> {{ "Rechercher" | translate }}
+    </button>
+  </div>
+</p-panel>
+<app-data-table
+  [className]="className"
+  [cols]="cols"
+  [objectList]="activityAreaList"
+  [collectionSize]="collectionSize"
+  [size]="size"
+  (objectEdited)="onObjectEdited($event)"
+  (lazyLoadData)="loadDataLazy($event)"
+  [listName]="titleList"
+  [viewBtnVisible]="'false'"
+  [addBtnVisible]="showDialog"
+  (exportBtnExcelGlobal)="onExportExcel($event)"
+  (exportBtnPdf)="onExportPdf($event)"
+  (exportBtnExcelVue)="onExportExcel($event)"
+  [permissionCreate]="['PRODUCT_CREATE']"
+  [permissionDelete]="['PRODUCT_DELETE']"
+  [permissionEdit]="['PRODUCT_EDIT']"
+></app-data-table>
+
+<div *ngIf="showDialogActivityArea == true">
+  <app-secteur-activite-edit
+    [editMode]="editMode"
+    [selectedActivityArea]="selectedactivityAreas[0]"
+    (showDialog)="onShowDialog($event)"
+  >
+  </app-secteur-activite-edit>
+</div>
+
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+  [acceptLabel]="'Oui'"
+  [rejectLabel]="'Non'"
+>
+</p-confirmDialog>

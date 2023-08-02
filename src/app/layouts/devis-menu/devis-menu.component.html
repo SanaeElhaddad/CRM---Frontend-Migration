@@ -1,0 +1,17 @@
+<p-breadcrumb [model]="itemsBreadcrumb" [home]="homeBreadcrumb"></p-breadcrumb>
+<p-tabView>
+  <p-tabPanel header="Devis" headerStyleClass="onglet-p-2">
+    <ng-template pTemplate="content">
+      <app-devis-list></app-devis-list>
+    </ng-template>
+  </p-tabPanel>
+  <p-tabPanel
+    [cache]="false"
+    header="Ligne de devis"
+    headerStyleClass="onglet-p-2"
+  >
+    <ng-template pTemplate="content">
+      <app-devis-line-list></app-devis-line-list>
+    </ng-template>
+  </p-tabPanel>
+</p-tabView>

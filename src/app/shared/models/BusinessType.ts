@@ -6,5 +6,5 @@ export class BusinessType {
   description!: string;
   creationDate!: Date;
   updateDate!: Date;
-  prerequisiteTypes: PrerequisiteType[];
+  // prerequisiteTypes: PrerequisiteType[];
 }

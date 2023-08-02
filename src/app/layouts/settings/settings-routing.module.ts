@@ -7,6 +7,7 @@ import { SettingsComponent } from "./settings.component";
 import { GeneralComponent } from "./general/general.component";
 import { ProductTypeComponent } from "./product-type/product-type.component";
 
+
 const routes: Routes = [
   {
     path: "",
