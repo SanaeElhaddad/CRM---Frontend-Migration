@@ -49,13 +49,6 @@ import { ProductFinanceComponent } from '../layouts/product/product-list/product
 import { ProductImagesComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-images/product-images.component';
 import { ProductPriceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-price/product-price.component';
 import { ProductConditionnementComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-conditionnement/product-conditionnement.component';
-import { ProductService } from './services/api/product.service';
-import { PoductDetailComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/poduct-detail.component';
-import { ProductFicheComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-fiche/product-fiche.component';
-import { ProductFinanceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-finance/product-finance.component';
-import { ProductImagesComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-images/product-images.component';
-import { ProductPriceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-price/product-price.component';
-import { ProductConditionnementComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-conditionnement/product-conditionnement.component';
 
 
 @NgModule({
