@@ -1,0 +1,38 @@
+
+.col-container {
+  display: flex;
+  width: 100%;
+  padding-top: 20px;
+}
+.col {
+  padding: 16px;
+}
+.col-detail{
+  display: flex;
+  margin-top: 32px;
+  justify-content: space-around;
+}
+.col h2{
+  margin-bottom: 10px;
+}
+.col-detail p{
+
+  color: #525252;
+  font-size: 14px;
+  max-width: 100%;
+  padding-top: 8px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.col-detail td {
+  width: 194px;
+}
+
+/* .p-button {
+  background: #4084bd !important;
+  color: #ffffff !important;
+  border-color: #2196F3 !important;
+  font-size: 13px;
+  font-weight: 600;
+} */
+

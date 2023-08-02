@@ -1,3 +1,5 @@
+import { Product } from './../../models/product';
+import { ProductType } from './../../models/ProductType';
 import { User } from './../../models/user';
 import { EmsService } from './ems.service';
 import {Injectable} from '@angular/core';
@@ -7,10 +9,11 @@ import { map } from 'rxjs/operators';
 
 
 @Injectable()
-export class UserService extends EmsService<User> {
+export class ProductService extends EmsService<Product> {
 
   constructor(proxy: ProxyService) {
-    super(proxy, 'users');
+    super(proxy, 'products');
   }
 
 }
+

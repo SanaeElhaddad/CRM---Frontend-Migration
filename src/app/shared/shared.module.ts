@@ -1,3 +1,4 @@
+import { ProductListEditComponent } from './../layouts/product/product-list/product-list-edit/product-list-edit.component';
 import {PaginatorModule} from 'primeng/paginator';
 import {DialogModule} from 'primeng/dialog';
 import {SplitButtonModule} from 'primeng/splitbutton';
@@ -40,10 +41,26 @@ import {HasPermissionDirective} from './directive/hasPermission.directive';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { ProductTypeService } from './services/api/product-type.service';
 import { UserService } from './services/api/user.service';
+import { ProductService } from './services/api/product.service';
+import { PoductDetailComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/poduct-detail.component';
+import { ProductFicheComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-fiche/product-fiche.component';
+import { ProductFinanceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-finance/product-finance.component';
+import { ProductImagesComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-images/product-images.component';
+import { ProductPriceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-price/product-price.component';
+import { ProductConditionnementComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-conditionnement/product-conditionnement.component';
 
 
 @NgModule({
-  declarations: [DataTableComponent, HasPermissionDirective],
+  declarations: [DataTableComponent,
+    HasPermissionDirective,
+    ProductListEditComponent,
+    PoductDetailComponent,
+    ProductFicheComponent,
+    ProductFinanceComponent,
+    ProductImagesComponent,
+    ProductPriceComponent,
+    ProductConditionnementComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -74,9 +91,19 @@ import { UserService } from './services/api/user.service';
     BreadcrumbModule,
     PanelModule,
 
+
   ],
   exports: [
-    DataTableComponent, NgxPermissionsModule, HasPermissionDirective
+    DataTableComponent, NgxPermissionsModule,
+    HasPermissionDirective,
+    TranslateModule,
+    ProductListEditComponent,
+    PoductDetailComponent,
+    ProductFicheComponent,
+    ProductFinanceComponent,
+    ProductImagesComponent,
+    ProductPriceComponent,
+    ProductConditionnementComponent
   ]
 })
 export class SharedModule {
@@ -87,7 +114,8 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
          ProductTypeService,
-         UserService
+         UserService,
+         ProductService
 
       ],
 

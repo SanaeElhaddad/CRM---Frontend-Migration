@@ -1,0 +1,60 @@
+
+
+<p-dialog
+header="{{ title | translate }}"
+[(visible)]="displayDialog"
+position="center"
+[focusOnShow]="false"
+[responsive]="true"
+showEffect="fade"
+[modal]="true"
+[style]="{ width: '900px' }"
+(onHide)="onShowDialog()"
+
+>
+
+<div class="col-container">
+  <div class="col"
+  style="text-align: center;
+  width: 50%;
+  border: solid 1px #9d9d9d;background-color: #fbfbfb;">
+       <img [src]=" 'data:image/jpeg;base64,'+this.selectProduct.images[0].bytes"/>
+
+  </div>
+
+  <div class="col">
+    <h2>{{selectProduct.desc}}</h2>
+   <div class="col-detail">
+    <table>
+    <tr>
+     <td><p>Code:</p></td>
+      <td> <p>{{selectProduct.code}}</p></td>
+    </tr>
+    <tr>
+     <td><p>Prix:</p></td>
+      <td> <p>{{selectProduct.salePriceUB}}</p></td>
+    </tr>
+    <tr>
+     <td><p>Catégorie:</p></td>
+      <td> <p>{{selectProduct.productType.description}}</p></td>
+    </tr>
+    <tr>
+     <td><p>Quantité en stock:</p></td>
+      <td> <p>{{selectProduct.stockQuantity}}</p></td>
+    </tr>
+    <tr>
+      <td></td>
+
+      <td>
+        <button (click)="getProduct()" pButton type="button" class="p-button-info">detail de produit</button>
+    </tr>
+       </table>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+</p-dialog>

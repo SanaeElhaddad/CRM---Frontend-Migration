@@ -1,0 +1,17 @@
+<p-dialog
+header="{{ title | translate }}"
+[(visible)]="displayDialog"
+position="center"
+[focusOnShow]="false"
+[responsive]="true"
+showEffect="fade"
+[modal]="true"
+[style]="{ width: '900px' }"
+(onHide)="onShowDialog()"
+
+>
+
+<h1>Add product price </h1>
+
+
+</p-dialog>

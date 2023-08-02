@@ -1,0 +1,120 @@
+<p-panel header="Filters" [toggleable]="true">
+  <div class="row">
+    <div class="col-md-3">
+      <label class="font-weight-bold">{{ "Catégorie :" | translate }}</label
+      ><br />
+      <p-autoComplete [(ngModel)]="ProductTypeSearch" [suggestions]="ProductTypeList" (completeMethod)="oncodeProductTypeSearch($event)" field="code" [dropdown]="true">
+    </p-autoComplete>
+    </div>
+    <div class="col-md-3">
+      <label class="font-weight-bold">{{ "Type :" | translate }}</label
+        ><br />
+        <p-autoComplete [(ngModel)]="ProductTypeSearch" [suggestions]="ProductTypeList"
+        (completeMethod)="oncodeProductTypeSearch($event)" field="code"></p-autoComplete>
+    </div>
+
+    <div class="col-md-3">
+        <label class="font-weight-bold">{{ "Code Produit:" | translate }}</label
+          ><br />
+          <p-autoComplete [(ngModel)]="codeSearch" [suggestions]="productList"
+          (completeMethod)="onNameSearch($event)" field="code"></p-autoComplete>
+    </div>
+
+    <div class="col-md-3">
+      <label class="font-weight-bold">Description produit :</label
+      ><br />
+      <p-autoComplete [(ngModel)]="searchQuery" [suggestions]="productList"
+      (completeMethod)="onNameSearch($event)" field="code"></p-autoComplete>
+    </div>
+
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="text-center">
+    <button type="button" class="btn btn-primary mr-2" (click)="reset()">
+      <i class="fa fa-refresh mr-2"></i> Réinitialiser
+    </button>
+
+    <button type="button" class="btn btn-success" (click)="onSearchClicked()">
+      <i class="fa fa-search mr-2"></i> {{ 'Rechercher' | translate}}
+    </button>
+  </div>
+</p-panel>
+
+<div class="card">
+  <p-dataView #dv [value]="productList" [paginator]="true" [rows]="9" filterBy="code"
+      [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+      <ng-template pTemplate="header">
+          <div class="row">
+
+          <div class="col-lg-12">
+            <span style="float:right;">
+              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+
+            </span>
+
+        </div>
+
+          </div>
+
+          <ngx-spinner
+            bdColor="rgba(255,255,255,0)"
+            size="large"
+            color="#00d2ff"
+            type="ball-spin-fade-rotating"
+          ></ngx-spinner>
+
+      </ng-template>
+      <ng-template let-product pTemplate="listItem">
+        <div class="col-lg-4">
+          <div class="product-grid-item card">
+              <div class="product-grid-item-content">
+                  <img src="{{product.images.bytes}}" [alt]="product.code"/>
+                  <div class="product-description">{{product.desc}}</div>
+                  <div class="product-name">{{product.salePriceUB}}</div>
+
+              </div>
+          </div>
+      </div>
+
+      </ng-template>
+
+      <ng-template let-product pTemplate="gridItem">
+
+        <div class="col-lg-4">
+           <div class="product-grid-item card">
+                <div class="product-grid-item-content">
+                  <img [src]=" 'data:image/jpeg;base64,'+product.images[0].bytes" [alt]="product.code" (click)="getSelectProduct(product)"/>
+                  <div class="product-description">{{product.desc}}</div>
+                    <div class="product-name">{{product.salePriceUB}}</div>
+                </div>
+            </div>
+
+        </div>
+    </ng-template>
+    <p-paginator [rows]="10" [totalRecords]="100"></p-paginator>
+
+  </p-dataView>
+</div>
+
+
+<!-- <p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+  [acceptLabel]="'Oui'"
+  [rejectLabel]="'Non'"
+>
+</p-confirmDialog> -->
+
+<div *ngIf="showDialog == true">
+  <app-product-list-edit
+  (showDialog)="onShowDialog($event)"
+  [selectProduct]="selectedProduct"
+
+  >
+  </app-product-list-edit>
+</div>
+
+
