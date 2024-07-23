@@ -1,4 +1,6 @@
 import { Owner } from "./Owner";
+import { Product } from './product';
+import { User } from './user';
 
 export class Uom {
   uomId: number;
@@ -6,7 +8,7 @@ export class Uom {
   uomDescription: string;
   uomUpdateDate: Date;
   uomCreationDate: Date;
-  // uomProducts: Array<Product>;
-  // private User uomUser;
-  // uomOwner: Owner;
+  uomProducts: Array<Product>;
+  uomUser: User;
+  uomOwner: Owner;
 }

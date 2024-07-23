@@ -1,3 +1,7 @@
+import { Owner } from './Owner';
+import { Vat } from './Vat';
+import { Image } from './Image';
+import { Byte } from '@angular/compiler/src/util';
 export class ProductType {
 
 
@@ -6,10 +10,10 @@ export class ProductType {
   updateDate!: Date;
   creationDate!: Date;
   description!: string;
-  // owner!: Owner;
+  owner!: Owner;
   productType!: ProductType;
-  // vat!: Vat;
-  // image: byte[];
+  vat!: Vat;
+  image:Byte[];
 
 
 }

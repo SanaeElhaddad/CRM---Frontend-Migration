@@ -1,0 +1,48 @@
+<app-data-table
+  [className]="className"
+  [cols]="cols"
+  [objectList]="productPackList"
+  [collectionSize]="collectionSize"
+  [size]="size"
+  (objectEdited)="onObjectEdited($event)"
+  (lazyLoadData)="loadDataLazy($event)"
+  (exportBtnExcelGlobal)="onExportExcel($event)"
+  (exportBtnPdf)="onExportPdf($event)"
+  (exportBtnExcelVue)="onExportExcel($event)"
+  [listName]="titleList"
+
+></app-data-table>
+<div *ngIf="showDialog == true">
+  <app-product-conditionnement-edit
+    [editMode]="editMode"
+    [productPackSelected]="productPackSelected[0]"
+    (showDialog)="onShowDialog($event)"
+    (productPack)="getProductPack($event)"
+  >
+  </app-product-conditionnement-edit>
+</div>
+<p-toast position="top-right" [baseZIndex]="5000"></p-toast>
+<ngx-spinner
+  bdColor="rgba(255,255,255,0)"
+  size="large"
+  color="#00d2ff"
+  type="ball-spin-fade-rotating"
+></ngx-spinner>
+<p-toast position="top-right" [baseZIndex]="5000"></p-toast>
+<ngx-spinner
+  bdColor="rgba(255,255,255,0)"
+  size="large"
+  color="#00d2ff"
+  type="ball-spin-fade-rotating"
+></ngx-spinner>
+
+
+<p-confirmDialog
+
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+  [acceptLabel]="'Oui'"
+  [rejectLabel]="'Non'"
+>
+</p-confirmDialog>
+

@@ -1,0 +1,29 @@
+
+
+<div class="p-2 border-1 surface-border border-round w-15rem" pDroppable (onDrop)="drop()">
+    <ul class="list-none flex flex-column gap-2 p-0 m-0"  style="list-style-type:none" >
+      <li>
+        <button pButton type="button" icon="pi pi-plus" class="p-button-success" (click)="onShowDialog()"></button>
+      </li>
+        <li *ngFor="let image of productImageList" class="p-2 border-round shadow-1">
+          <div class="p-2 border-1 surface-border border-round w-15rem">
+            <ul class="list-none flex flex-column gap-2 p-0 m-0" style="list-style-type:none">
+            </ul>
+        </div>
+          <img [src]=" 'data:image/jpeg;base64,'+image.bytes" [alt]="image.id" *ngIf="productSelected"/>
+          <button pButton type="button" icon="pi pi-pencil" class="p-button-warning" (click)="onEditImage(image)" ></button>
+          <button pButton type="button" icon="pi pi-trash" class="p-button-danger" (click)="onObjectDeleted(image)"></button>
+        </li>
+    </ul>
+</div>
+<p-paginator [rows]="10" [totalRecords]="100" (onPageChange)="paginate($event)"></p-paginator>
+
+<div *ngIf="showDialog">
+  <app-product-image-edit
+[selectedProductImage]="selectedProductImage"
+(productImage)="getProductImage($event)"
+></app-product-image-edit>
+
+
+</div>
+

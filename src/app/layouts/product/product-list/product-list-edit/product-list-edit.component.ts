@@ -73,6 +73,7 @@ export class ProductListEditComponent implements OnInit {
     this.subscriptions.unsubscribe();
   }
 getProduct(){
+ // this.productService.setProduct(this.selectProduct);
   this.router.navigateByUrl('/core/product/detail/'+this.selectProduct.id)
 }
 }

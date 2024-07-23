@@ -1,7 +1,8 @@
+import { Owner } from './Owner';
 export class ProductCategory {
 
   id!: number;
-  // owner!: Owner;
+  owner!: Owner;
   code!: string;
   updateDate!: Date;
   creationDate!: Date;

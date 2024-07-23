@@ -1,0 +1,165 @@
+
+<form [formGroup]="productForm" *ngIf="productForm">
+  <div class="containe">
+      <div>  <i class="pi pi-angle-double-left"></i></div>
+      <div><input type="text" pInputText class="input" formControlName="code" /></div>
+      <div><i class="pi pi-angle-double-right"></i></div>
+      <div><button pButton type="button" class="p-button-info">Imprimer</button></div>
+  </div>
+    <div class="card">
+      <div class="detail_pro">
+        <div class="row">
+          <div class="form-group col-md-3">
+           <label for="">Code*:</label>
+           <input type="text" pInputText formControlName="code"/>
+          </div>
+          <div class="form-group col-md-3">
+           <label for=""> Description courte:</label>
+           <input type="text" pInputText formControlName="shortDesc"/>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Description:</label>
+           <textarea [rows]="3" [cols]="7" pInputTextarea [autoResize]="true" formControlName="desc"></textarea>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Description en arabe:</label>
+           <textarea [rows]="3" [cols]="7" pInputTextarea [autoResize]="true" formControlName="description"></textarea>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Pseudo du produit:</label>
+           <p-autoComplete formControlName="alias" [suggestions]="alias" (completeMethod)="onSearchAlias($event)" field="eanCode"
+           ></p-autoComplete>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Catégorie produit:</label>
+           <input type="text" pInputText  formControlName="productCategory"/>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Type de produit:</label>
+           <p-autoComplete formControlName="productType" [suggestions]="codeList" (completeMethod)="onCodeSearch($event)" field="code"
+      ></p-autoComplete>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Forme de produit:</label>
+           <p-autoComplete [dropdown]="true" class="combobox" formControlName="productForm" [suggestions]="productFormCode" (completeMethod)="onProductFormSearch($event)" field="code"></p-autoComplete>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Fournisseur par défaut:</label>
+           <input type="text" pInputText formControlName="supplier"/>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">TVA*:</label>
+           <p-autoComplete formControlName="vat" [suggestions]="vat" (completeMethod)="onSearchVat($event)" field="vatValue" [dropdown]="true"
+           ></p-autoComplete>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Unité de base*:</label>
+           <p-autoComplete class="uniteBase" formControlName="uomByProductUomBase" [suggestions]="uomCode" (completeMethod)="onUomSearch($event)" field="uomCode"
+           ></p-autoComplete>
+           <button pButton type="button" icon="pi pi-plus" iconPos="left" class="p-button-success btnAdd" (click)="onShowDialog($event)"></button>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Unité de vente:</label>
+           <p-autoComplete [dropdown]="true" class="combobox" formControlName="uomByProductUomSale" [suggestions]="uomCode" (completeMethod)="onUomSearch($event)" field="uomCode"></p-autoComplete>
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Actif:</label><br><br>
+
+             <p-radioButton  name="active" [value]="true" formControlName="active" label="{{'Oui'| translate}}"></p-radioButton>
+             <p-radioButton  name="active" [value]="false" formControlName="active" label="{{'Non'| translate}}"></p-radioButton>
+
+          </div>
+          <div class="form-group col-md-3">
+           <label for="">Stock:</label><br><br>
+             <p-radioButton  name="stocked" [value]="true" formControlName="stocked" label="{{'Oui'| translate}}"></p-radioButton>
+             <p-radioButton  name="stocked" [value]="false" formControlName="stocked" label="{{'Non'| translate}}"></p-radioButton>
+          </div>
+        </div>
+     </div>
+   </div>
+</form>
+    <p-tabView>
+      <p-tabPanel  header="Prix Produit par zone" >
+     <span *ngIf="showProductSelected==true">
+      <app-product-price>
+      </app-product-price>
+     </span>
+      </p-tabPanel>
+      <p-tabPanel header="Données financières">
+        <form [formGroup]="productForm">
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label for="">Devise de vente*:</label>
+
+          <p-dropdown [options]="codeCurrency" formControlName="currency" optionLabel="currencyCode"></p-dropdown>
+
+             </div>
+            <div class="form-group col-md-3">
+              <label for=""> Prix de vente unité de base*:</label>
+              <input type="text" pInputText formControlName="salePriceUB"/>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Prix d'achat:</label>
+              <input type="text" pInputText formControlName="purshasePriceUB"/>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Marge sur achat:</label>
+              <input type="text" pInputText formControlName="marginOfPurchase" />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Coût de revient:</label>
+              <input type="text" pInputText formControlName="costsOfReturn"/>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Marge sur coût de revientt:</label>
+              <input type="text" pInputText formControlName="marginOfCostsOfReturn"/>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Remise maximal:</label>
+              <input type="text" pInputText formControlName="discount" />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="">Prix de maintenance annuel:</label>
+              <input type="text" pInputText formControlName="maintenanceCost"/>
+            </div>
+
+          </div>
+        </form>
+
+      </p-tabPanel>
+      <p-tabPanel header="Images">
+        <span *ngIf="showProductSelected==true">
+          <app-product-images></app-product-images>
+        </span>
+      </p-tabPanel>
+      <p-tabPanel header="Conditionnement">
+        <span *ngIf="showProductSelected==true">
+        <app-product-conditionnement></app-product-conditionnement>
+        </span>
+      </p-tabPanel>
+      <p-tabPanel header="Fiche technique">
+        <form [formGroup]="productForm">
+          <p-editor formControlName="technicalSheet" [style]="{ height: '320px' }"></p-editor>
+        </form>
+      </p-tabPanel>
+
+    </p-tabView>
+
+
+    <div *ngIf="showDialog == true">
+      <app-product-uom-base-edit
+      (showDialog)="onShowDialog($event)"
+      ></app-product-uom-base-edit>
+      </div>
+    <div class="bttn">
+
+      <button  type="button" class="button-primary" (click)="annuler()">Annuler</button>
+      <button type="button" class="button-success">Valider et continuer</button>
+      <button type="button" class="button-success" (click)="setValue()">Valider</button>
+
+
+    </div>
+
+
+
+

@@ -1,20 +1,29 @@
+import { ProductPack } from './ProductPack';
 import { Byte } from '@angular/compiler/src/util';
 import { ProductType } from './ProductType';
 import { Image } from 'exceljs';
 import { ProductPriceByZone } from './ProductPriceByZone';
+import { Uom } from './uom';
+import { Owner } from './Owner';
+import { Vat } from './Vat';
+import { Currency } from './Currency';
+import { Alias } from './alias';
+import { ProductCategory } from './ProductCategory';
+import { ProductForm } from './ProductForm';
+import { Supplier } from './supplier';
 export class Product {
   id: number;
-  owner: any;
-  uomByProductUomSale: any;
-  uomByProductUomBase: any;
-  uomByProductUomPurshase: any;
+  owner: Owner;
+  uomByProductUomSale: Uom;
+  uomByProductUomBase: Uom;
+  uomByProductUomPurshase: Uom;
   code: string;
-  alias: any;
+  alias: Alias;
   productParent: Product;
   productType: ProductType[];
-  productSubType: any;
+  productSubType: ProductType;
   images:any[];
-  vat: any;
+  vat: Vat; //tva
   materialABCCode: string;
   dlcControl: boolean;
   dluoControl: boolean;
@@ -45,16 +54,16 @@ export class Product {
   variable10: string;
   qualityOfControl: boolean;
   samplingPercentage: number;
-  productPack: any;
+ // productPack: any;
   warrantyManagement: boolean;
-  discount: number;
+  discount: number; //remis
   warrantyPeriod: any;
-  currency: any;
-  currencyPurshase: any;
-  productForm: any;
+  currency: Currency; //devis
+  currencyPurshase: Currency; //devis de vente
+  productForm: ProductForm;
   dimension: boolean;
   //aliases: Alias[];
-  //productPacks: ProductPack[];
+  productPacks: ProductPack[];
   //productDimensions: ProductDimension[];
   version: number;
   soldPrice: number;
@@ -68,10 +77,10 @@ export class Product {
   marginOfPurchase: number;
   marginOfCostsOfReturn: number;
   costsOfReturn: number;
-  productCategory: any;
+  productCategory: ProductCategory;
   stocked: boolean;
   description: string;
-  supplier: any;
+  supplier: Supplier;
   productPriceByZones: ProductPriceByZone[];
   maintenanceCost: number;
 }

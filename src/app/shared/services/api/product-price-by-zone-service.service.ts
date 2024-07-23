@@ -8,7 +8,18 @@ import { EmsService } from './ems.service';
 })
 export class ProductPriceByZoneServiceService extends EmsService<ProductPriceByZone>{
 
+   private productPricebyZone:ProductPriceByZone[];
   constructor(proxy: ProxyService) {
-    super(proxy, 'ProductPriceByZone');
+    super(proxy, 'productPriceByZones');
   }
+ setProductPriceByZone(productPricebyZone:ProductPriceByZone[]){
+  this.productPricebyZone=productPricebyZone;
+
+ }
+
+ getProductPriceByZone( ): ProductPriceByZone[]{
+  return this.productPricebyZone;
+
+ }
+
 }

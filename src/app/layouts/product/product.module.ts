@@ -25,16 +25,23 @@ import {TableModule} from 'primeng/table';
 import { ProductListEditComponent } from './product-list/product-list-edit/product-list-edit.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-import { PoductDetailComponent } from './product-list/product-list-edit/poduct-detail/poduct-detail.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TabViewModule} from 'primeng/tabview';
-import { ProductFicheComponent } from './product-list/product-list-edit/poduct-detail/product-fiche/product-fiche.component';
-import { ProductFinanceComponent } from './product-list/product-list-edit/poduct-detail/product-finance/product-finance.component';
-import { ProductImagesComponent } from './product-list/product-list-edit/poduct-detail/product-images/product-images.component';
-import { ProductPriceComponent } from './product-list/product-list-edit/poduct-detail/product-price/product-price.component';
-import { ProductConditionnementComponent } from './product-list/product-list-edit/poduct-detail/product-conditionnement/product-conditionnement.component';
+import { ProductFicheComponent } from './product-edit/product-fiche/product-fiche.component';
+import { ProductFinanceComponent } from './product-edit/product-finance/product-finance.component';
+import { ProductImagesComponent } from './product-edit/product-images/product-images.component';
+import { ProductPriceComponent } from './product-edit/product-price/product-price.component';
+import { ProductConditionnementComponent } from './product-edit/product-conditionnement/product-conditionnement.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddProductPriceComponent } from './product-edit/product-price/add-product-price/add-product-price.component';
+import { EditorModule } from 'primeng/editor';
+import { DragDropModule } from 'primeng/dragdrop';
+import { ProductImageEditComponent } from './product-edit/product-images/product-image-edit/product-image-edit.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import { ProductConditionnementEditComponent } from './product-edit/product-conditionnement/product-conditionnement-edit/product-conditionnement-edit.component';
+import { ProductUomBaseEditComponent } from './product-edit/product-uom-base-edit/product-uom-base-edit.component';
+import { ProductCatalogueComponent } from './product-catalogue/product-catalogue.component';
 
 
 
@@ -50,12 +57,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductComponent,
     ProductListComponent,
     ProductEditComponent,
-    PoductDetailComponent,
     ProductFicheComponent,
     ProductFinanceComponent,
     ProductImagesComponent,
     ProductPriceComponent,
-    ProductConditionnementComponent
+    ProductConditionnementComponent,
+    AddProductPriceComponent,
+    ProductImageEditComponent,
+    ProductListEditComponent,
+    ProductConditionnementEditComponent,
+    ProductUomBaseEditComponent,
+    ProductCatalogueComponent
+
   ],
   imports: [
     SharedModule,
@@ -84,7 +97,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputTextareaModule,
     RadioButtonModule,
     TabViewModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditorModule,
+    DragDropModule,
+    FileUploadModule
 
 
 

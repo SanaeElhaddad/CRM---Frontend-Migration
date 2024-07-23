@@ -43,24 +43,20 @@ import { ClientService } from './services/api/client.service';
 import { UserService } from './services/api/user.service';
 import { ProductTypeService } from './services/api/product-type.service';
 import { ProductService } from './services/api/product.service';
-import { PoductDetailComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/poduct-detail.component';
-import { ProductFicheComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-fiche/product-fiche.component';
-import { ProductFinanceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-finance/product-finance.component';
-import { ProductImagesComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-images/product-images.component';
-import { ProductPriceComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-price/product-price.component';
-import { ProductConditionnementComponent } from '../layouts/product/product-list/product-list-edit/poduct-detail/product-conditionnement/product-conditionnement.component';
+import { CurrencyService } from './services/api/currency.service';
+import { VatService } from './services/api/vat.service';
+import { UomService } from './services/api/uom.service';
+import { ProductFormService } from './services/api/ProductForm.service';
+import { ImageService } from './services/api/Image.service';
+import { ZoneService } from './services/api/zone.service';
+import { AliasService } from './services/api/alias.service';
+import { ProductPackService } from './services/api/ProductPack.service';
 
 
 @NgModule({
   declarations: [DataTableComponent,
     HasPermissionDirective,
-    ProductListEditComponent,
-    PoductDetailComponent,
-    ProductFicheComponent,
-    ProductFinanceComponent,
-    ProductImagesComponent,
-    ProductPriceComponent,
-    ProductConditionnementComponent
+
   ],
   imports: [
     CommonModule,
@@ -98,13 +94,6 @@ import { ProductConditionnementComponent } from '../layouts/product/product-list
     DataTableComponent, NgxPermissionsModule,
     HasPermissionDirective,
     TranslateModule,
-    ProductListEditComponent,
-    PoductDetailComponent,
-    ProductFicheComponent,
-    ProductFinanceComponent,
-    ProductImagesComponent,
-    ProductPriceComponent,
-    ProductConditionnementComponent
   ]
 })
 export class SharedModule {
@@ -115,10 +104,17 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
          ProductTypeService,
-
+         CurrencyService,
          UserService,
-        ClientService,
-         ProductService
+         ClientService,
+         ProductService,
+         VatService,
+         UomService,
+         ProductFormService,
+         ImageService,
+         ZoneService,
+         AliasService,
+         ProductPackService
 
       ],
 

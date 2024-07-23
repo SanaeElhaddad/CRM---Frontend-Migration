@@ -1,0 +1,39 @@
+<form [formGroup]="financeForm">
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="">Devise de vente*:</label>
+
+    <p-dropdown [options]="codeCurrency" formControlName="currency" optionLabel="currencyCode"></p-dropdown>
+
+       </div>
+      <div class="form-group col-md-3">
+        <label for=""> Prix de vente unité de base*:</label>
+        <input type="text" pInputText formControlName="salePriceUB"/>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="">Prix d'achat:</label>
+        <input type="text" pInputText formControlName="purshasePriceUB"/>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="">Marge sur achat:</label>
+        <input type="text" pInputText formControlName="marginOfPurchase" />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="">Coût de revient:</label>
+        <input type="text" pInputText formControlName="costsOfReturn"/>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="">Marge sur coût de revientt:</label>
+        <input type="text" pInputText formControlName="marginOfCostsOfReturn"/>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="">Remise maximal:</label>
+        <input type="text" pInputText formControlName="discount" />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="">Prix de maintenance annuel:</label>
+        <input type="text" pInputText formControlName="maintenanceCost"/>
+      </div>
+
+    </div>
+  </form>

@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
   sortField: string;
   selectedProduct: Product= new Product();
   constructor(
-    private proxyService:ProxyService,
+
     private productService:ProductService,
     private productTypeService:ProductTypeService,
     private spinner: NgxSpinnerService,
@@ -140,57 +140,14 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  onTanrsportAdd(event) {
-    this.loadData();
-  }
-  onObjectEdited(event) {
 
-    this.editMode = event.operationMode;
-    this.selectProducts = event.object;
-    if (this.editMode === 3) {
-      this.onDeleteAll();
-    } else {
-      this.showDialog = true;
-    }
-
-  }
-  onDeleteAll() {
-
-    if (this.selectProducts.length >= 1) {
-      this.confirmationService.confirm({
-        message: 'Voulez vous vraiment Suprimer?',
-        accept: () => {
-          const ids = this.selectProducts.map(x => x.id);
-          this.subscriptions.add(this.productService.deleteAllByIds(ids).subscribe(
-            data => {
-              this.messageService.add({severity:'success', summary: 'Suppression', detail: 'Elément Supprimer avec Succés'});
-
-             // this.toastr.success('Elément Supprimer avec Succés', 'Suppression');
-              this.loadData();
-            },
-            error => {
-              this.messageService.add({severity:'error', summary: 'Erreur', detail: 'Erreur'});
-
-              //this.toastr.error(error.error.message, 'Erreur');
-            },
-            () => this.spinner.hide()
-          ));
-        }
-      });
-    } else if (this.selectProducts.length < 1) {
-      this.toastr.warning('aucun ligne sélectionnée');
-    }
-  }
   getSelectProduct(event){
     console.log(event);
-    console.log("test test");
     this.selectedProduct= event;
-
     this.showDialog = true;
   }
 
   onShowDialog(event) {
-    console.log("cccccc");
     this.showDialog = event;
     this.loadData();
   }

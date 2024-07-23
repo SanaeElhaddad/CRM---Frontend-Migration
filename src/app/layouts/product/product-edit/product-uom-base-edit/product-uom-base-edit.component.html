@@ -1,0 +1,36 @@
+<p-dialog
+  header="{{ title | translate }}"
+  [(visible)]="displayDialog"
+  [focusOnShow]="false"
+  [responsive]="true"
+  showEffect="fade"
+  [modal]="true"
+  [style]="{ width: '600px' }"
+  (onHide)="onShowDialog()"
+>
+<div class="containe">
+  <form [formGroup]="uomBaseForm">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="">Code*:</label>
+        <input type="text" pInputText formControlName="uomCode"/>
+       </div>
+      <div class="form-group col-md-6">
+        <label for="">Description:</label>
+        <input type="text" pInputText formControlName="uomDescription"/>
+      </div>
+    </div>
+    <br><br>
+    <div class="text-center">
+
+      <button  type="button" class="button-primary" (click)="annuler()">Annuler</button>
+
+
+      <button type="button" class="button-success" (click)="onSubmitForm()">Valider</button>
+
+
+    </div>
+  </form>
+</div>
+
+</p-dialog>
