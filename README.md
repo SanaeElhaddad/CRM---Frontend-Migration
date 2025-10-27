@@ -1,27 +1,35 @@
-# Angular
+# CRM - Migration Frontend (PFA)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.
+Ce projet a été réalisé dans le cadre d’un stage PFA au sein de l’entreprise **BAGILE**.  
+L’objectif principal était la modernisation du frontend d’une application CRM existante utilisée pour la gestion de la relation client.
 
-## Development server
+## Objectifs du projet
+- Migrer l’ancienne interface vers une version plus moderne et maintenable
+- Améliorer l’ergonomie et l’expérience utilisateur
+- Mettre en place une architecture frontend basée sur les composants Angular
+- Faciliter l’intégration avec le backend via des API REST
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Rôle et réalisation
+J’ai pris en charge la partie frontend en Angular, notamment :
+- Analyse du frontend existant et identification des besoins de refonte
+- Développement de nouveaux écrans et composants
+- Intégration de **PrimeNG** et **Bootstrap** pour améliorer l’UI
+- Collaboration avec l’équipe backend pour l’intégration des API
+- Participation aux cérémonies Agile (daily stand-up, sprint planning, sprint review et retrospective)
 
-## Code scaffolding
+## Stack technique
+| Technologie | Usage |
+|------------|--------|
+| Angular     | Développement du frontend |
+| HTML / CSS  | Structure et style |
+| Bootstrap   | Mise en page responsive |
+| PrimeNG     | Composants UI avancés |
+| GitLab      | Versioning et collaboration |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Résultats obtenus
+- Interface modernisée et plus intuitive
+- Architecture frontend mieux structurée et maintenable
+- Amélioration de la productivité grâce à l’approche modulaire
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contexte pédagogique
+Cette expérience m’a permis de renforcer mes compétences en développement frontend dans un cadre Agile/Scrum, en travaillant au sein d’une équipe pluridisciplinaire tout en respectant les bonnes pratiques du développement logiciel.
